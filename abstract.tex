@@ -6,6 +6,8 @@
 \section{Abstract}
 SAT is a decision problem where we need to determine whether is a given Boolean formula in conjunctive normal form (CNF) is satisfiable. The problem is NP-complete, which means that there isn’t a known algorithm which could efficiently solves SAT problem.
 
+Our method improves on previous methods by MiniSAT and ManySAT, by solving the issues of sharing. ManySAT works by running many SAT instancies on a partitioned searchspace. MiniSAT works in a grid model, but has no sharing. We combine the sharing and grid based methods. We achive this by sharing graphs that share information on conflitcting clauses.
+
 The testing results of the algorithm demonstrate its efficiency and accuracy on various benchmark SAT problems. The new approach significantly reduced the runtime compared to classical methods. The potential of the algorithm is further proven by its ability to handle more complex instances.
 
 \end{document}
