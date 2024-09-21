@@ -1,0 +1,31 @@
+\documentclass{article}
+\usepackage{graphicx}
+
+
+\begin{document}
+
+
+\section{Introduction}
+% SAT summarized
+The Boolean Satisfiability Problem  is one of the most important and fundamental problem in Computer Science. Especially int the theory of algorithms and computational complexity. The point of the problem to decide, whether does exist a variable combination (True, False values), that satisfies a given logical formula, that contains more than one different variable and more than one binary logical operator. The problem is the first instance of the NP-complete category and plays a key role in NP problems examination.
+
+% History of SAT
+The history of SAT started in the 19. century. Boole algebra and logic domains founded, which made it possible to express logical operations in algebraic form. This evolved the modern computer logic and the basics of SAT problem. In the early 1900s, the works of Alan Turing and Kurt Gödel helped the formalization of problems like SAT and the analysis of the algorithms. In 1971 Stephen Cook published, that the SAT is and NP-complete problem, which means non-deterministic polynomial time problem. It follows, that every NP-problem traceable to SAT in polynomial time. This was the first time in history, when SAT was considered as a NP-complete problem. From the 1980s to the present day, due to the practical applications the demand of SAT solver efficient algorithms has increased. From the late 80s and 90s the evolution of the SAT solvers was extremely fast. On the one hand DPLL algorithm and it's different modifications, and on the other hand the conflict based learning techniques brought a breakthrough.
+% Important progresses and methods SAT solvers
+\\Some of the most important advances and methods in SAT solvers:
+\begin{itemize}
+    \item In 1962 the DPLL (Davis-Putnam-Logemann-Loveland) algorithm was published. It was the first efficient SAT solver, that searches for solutions systematically to the logical formula with tracing back and ramification.
+    \item The modern SAT solvers often use heuristic methods to reduce the seeking space, to find satisfying solutions quickly. For instance the VSIDS (Variable State Independent Decaying Sum) is an often used decision heuristic.
+    \item Conflict-Driven Clause Learning, CDCL is one of the most important innovator, that made possible to solve more complex problems. The algorithm tries to learn from conflicts, that occur during execution to avoid unnecessary searches.
+    \item In the late 90s, the Stochastic Local Search algorithm tries to solve the problem with heuristic approach. And works efficiently in the practical SAT cases.
+\end{itemize}
+% SAT praktical usage
+The SAT problem solution has many fields of application, such as:
+\begin{itemize}
+    \item \textbf{Hardware and software verification:} The logical electric circuits and the programs formal control.
+    \item \textbf{Code optimization and automated planning:} Solutions often used in optimization tasks such as automated planning.
+    \item \textbf{Cryptography:} SAT solver algorithms play key roles in cryptography algorithms security analysis.
+\end{itemize}
+
+
+\end{document}
