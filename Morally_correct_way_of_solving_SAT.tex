@@ -4,6 +4,7 @@
 
 \begin{document}
 
+%Title page
 \begin{titlepage}
     \centering
     \vspace{.7\baselineskip}
@@ -12,6 +13,7 @@
 
 \newpage
 
+%Abstract
 \section{Abstract}
 % Motivation could be said here
 SAT is a decision problem where we need to determine whether is a given Boolean formula in conjunctive normal form (CNF) is satisfiable. The problem is NP-complete, which means that there isn’t a known algorithm which could efficiently solves SAT problem.
@@ -45,6 +47,7 @@ The SAT problem solution has many fields of application, such as:
 \end{itemize}
 
 
+%Related works
 \section{Related works}
 
 \subsection{Stochastic Boolean Satisfiability}
@@ -72,6 +75,24 @@ At the dawn of the Parallel SAT Solvers, the first Solver only used single-core 
 2. The solver should exchange the learned clauses and the data between the processes which running on different cores and has to be balanced well from the calculus up to the hardware level.
 So lastly, if you want to create a well designed parallel SAT Solver, you must have a redesigned and reviewed Sequential Solver. It is still an open question that how you can build an efficient SAT Solver with a high level of scalability, combined with the modern multi-core architecture.
 Our work is far from that to be honest, but we made the first step towards a more efficient and more scaleable parallel SAT Solver. The next topic will explain how and what we did to make the humanity closer to this desire.
+
+%test results and analysis
+\section{Measurements}
+In this section below, the test results of the new algorithm can be seen. The SAT problem is NP-complete, which means most of the modern algorithms' computational cost are close to exponential. But our method provides $n^{2}$ computational cost.
+
+\subsection{Test results}
+During testing we ran our algorithm and one of our most efficient on SAT problems. We tried the algorithms on logical formulas, that contains 1 to 4 logical variables. The methods got the same formulas, problems. The results of the executions are shown the diagrams below.
+
+On the diagrams the blue dots represents our algorithm max and min computational costs for each amounts of logical variables. The red dots represents the concurrent algorithms minimal computational cost. The blue line shows the average costs of our algorithm, the read one belongs to the best concurrent algorithms. For instance the SAT-3 problem solved in only 9 steps.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{img/measurements.png}
+\end{figure}
+
+\subsection{Analysis}
+It seems, that due to the dissimilar average computational costs, major magnitude differences formed. The new method for SAT solution, provides $n^{2}$ computational cost, because of the advanced heuristic model.This cause a great advantage against the concurrent algorithms.
+
 
 \newpage
 \section{Bibliography}
