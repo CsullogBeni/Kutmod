@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\newtheorem{definition}{Definition}
+
+
+\begin{document}
+
+
+\section{Background}
+SAT problem is about satisfiability of Boolean formulas in conjunctive normal form (CNF). The necessary definitions for this can be read below. The definitions are valid in propositional logic.
+\subsection{Boolean formulas and satisfiability}
+\begin{definition}
+In propositional logic we use symbols to represent propositions, these symbols called propositional variable which can be true or false.
+\end{definition}
+\begin{definition}
+Interpretation is a function which maps propositional variables to logical values (true or false). In other words, the interpretation determines whether the value of a variable is true or false).
+\end{definition}
+\begin{definition}
+\begin{enumerate}
+    \item Every propositional variable is a formula.
+    \item If $X$ is a formula, then $\neg X$ is a formula too, where $\neg $ is the sign of negation.
+    \item If $X$ and $Y$ is a formula, then $(X   \circ Y$) is a formula too, where $\circ$ can be $\wedge$ (conjunction) or $\vee$ (disjunction) or $\supset$ (implication).
+\end{enumerate}
+Every formula is created by using the previous rules finitely many times.
+\end{definition}
+\begin{definition}
+An interpretation satisfies a formula if the formula is true in that interpretation.
+\end{definition}
+\begin{definition}
+A formula is satisfiable, if exists an interpretation which satisfies it, otherwise it is unsatisfiable.
+\end{definition}
+\subsection{Conjunctive normal form}
+\begin{definition}
+A propositional variable ($X$) and its negated form ($\neg X$) are called literals.
+\end{definition}
+\begin{definition}
+A disjunction of literals is called clause.
+\end{definition}
+\begin{definition}
+A conjunction of literals is a formula is in conjunctive normal form (CNF).
+\end{definition}
+
+
+\end{document}
