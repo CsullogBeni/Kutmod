@@ -1,0 +1,252 @@
+@article{surveyOfSatSolvers,
+    author = {Gong, Weiwei and Zhou, Xu},
+    title = "{A survey of SAT solver}",
+    journal = {AIP Conference Proceedings},
+    volume = {1836},
+    number = {1},
+    pages = {020059},
+    year = {2017},
+    month = {06},
+    abstract = "{In Computer Science, the Boolean Satisfiability Problem(SAT) is the problem of determining if there exists an interpretation that satisfies a given Boolean formula. SAT is one of the first problems that was proven to be NP-complete, which is also fundamental to artificial intelligence, algorithm and hardware design. This paper reviews the main algorithms of the SAT solver in recent years, including serial SAT algorithms, parallel SAT algorithms, SAT algorithms based on GPU, and SAT algorithms based on FPGA. The development of SAT is analyzed comprehensively in this paper. Finally, several possible directions for the development of the SAT problem are proposed.}",
+    issn = {0094-243X},
+    doi = {10.1063/1.4981999},
+    url = {https://doi.org/10.1063/1.4981999},
+    eprint = {https://pubs.aip.org/aip/acp/article-pdf/doi/10.1063/1.4981999/13742154/020059\_1\_online.pdf},
+}
+
+@inproceedings{satIsNPComplete,
+author = {Cook, Stephen A.},
+title = {The complexity of theorem-proving procedures},
+year = {1971},
+isbn = {9781450374644},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/800157.805047},
+doi = {10.1145/800157.805047},
+abstract = {It is shown that any recognition problem solved by a polynomial time-bounded nondeterministic Turing machine can be “reduced” to the problem of determining whether a given propositional formula is a tautology. Here “reduced” means, roughly speaking, that the first problem can be solved deterministically in polynomial time provided an oracle is available for solving the second. From this notion of reducible, polynomial degrees of difficulty are defined, and it is shown that the problem of determining tautologyhood has the same polynomial degree as the problem of determining whether the first of two given graphs is isomorphic to a subgraph of the second. Other examples are discussed. A method of measuring the complexity of proof procedures for the predicate calculus is introduced and discussed.},
+booktitle = {Proceedings of the Third Annual ACM Symposium on Theory of Computing},
+pages = {151–158},
+numpages = {8},
+location = {Shaker Heights, Ohio, USA},
+series = {STOC '71}
+}
+
+@Article{paralellSAT,
+author={Martins, Ruben
+and Manquinho, Vasco
+and Lynce, In{\^e}s},
+title={An overview of parallel SAT solving},
+journal={Constraints},
+year={2012},
+month={Jul},
+day={01},
+volume={17},
+number={3},
+pages={304-347},
+abstract={Boolean satisfiability (SAT) solvers are currently very effective in practice. However, there are still many challenging problems for SAT solvers. Nowadays, extra computational power is no longer coming from higher processor frequencies. At the same time, multicore architectures are becoming predominant. Exploiting this new architecture is essential for the evolution of SAT solvers. Due to the increasing interest in parallel SAT solving, it is important to give an overview of what has been done so far. This paper presents an overview of parallel SAT solving and it is expected to be a valuable document for researchers in this field. This overview covers the main topics of parallel SAT solving, namely, different approaches and a variety of clause sharing strategies. Additionally, an evaluation of multicore SAT solvers is presented, showing the evolution of multicore SAT solvers over the last years.},
+issn={1572-9354},
+doi={10.1007/s10601-012-9121-3},
+url={https://doi.org/10.1007/s10601-012-9121-3}
+}
+
+@article{shortSurveyParallelSAT,
+author = {Hölldobler, Steffen and Manthey, Norbert and Nguyen, Van-Hau and Stecklina, Julian and Steinke, Peter},
+year = {2011},
+month = {01},
+pages = {},
+title = {A short overview on modern parallel SAT-solvers},
+journal= {ResearchGate}
+}
+
+@inproceedings{SATforGeneNetworks,
+  title={A SAT-based approach to decipher Gene Regulatory Networks},
+  author={Fabien Corblin and Youssef Hamadi and Eric Fanchon and Laurent Trilling},
+  year={2007},
+  url={https://api.semanticscholar.org/CorpusID:14380033}
+}
+
+@InProceedings{z3,
+author="de Moura, Leonardo
+and Bj{\o}rner, Nikolaj",
+editor="Ramakrishnan, C. R.
+and Rehof, Jakob",
+title="Z3: An Efficient SMT Solver",
+booktitle="Tools and Algorithms for the Construction and Analysis of Systems",
+year="2008",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="337--340",
+abstract="Satisfiability Modulo Theories (SMT) problem is a decision problem for logical first order formulas with respect to combinations of background theories such as: arithmetic, bit-vectors, arrays, and uninterpreted functions. Z3 is a new and efficient SMT Solver freely available from Microsoft Research. It is used in various software verification and analysis applications.",
+isbn="978-3-540-78800-3"
+}
+
+@InProceedings{c32SAT,
+author="Brummayer, Robert
+and Biere, Armin",
+editor="Damm, Werner
+and Hermanns, Holger",
+title="C32SAT: Checking C Expressions",
+booktitle="Computer Aided Verification",
+year="2007",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="294--297",
+abstract="C32SAT is a tool for checking C expressions. It can check whether a given C expression can be satisfied, is tautological, or always defined according to the ISO C99 standard. C32SAT can be used to detect nonportable expressions where program behavior depends on the compiler. Our contribution consists of C32SAT's functional representation and the way it handles undefined values. Under-approximation is used as optimization.",
+isbn="978-3-540-73368-3"
+}
+
+@InProceedings{randomSearchSATInGrid,
+author="Hyv{\"a}rinen, Antti E. J.
+and Junttila, Tommi
+and Niemel{\"a}, Ilkka",
+editor="Autexier, Serge
+and Campbell, John
+and Rubio, Julio
+and Sorge, Volker
+and Suzuki, Masakazu
+and Wiedijk, Freek",
+title="Strategies for Solving SAT in Grids by Randomized Search",
+booktitle="Intelligent Computer Mathematics",
+year="2008",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="125--140",
+abstract="Grid computing offers a promising approach to solving challenging computational problems in an environment consisting of a large number of easily accessible resources. In this paper we develop strategies for solving collections of hard instances of the propositional satisfiability problem (SAT) with a randomized SAT solver run in a Grid. We study alternative strategies by using a simulation framework which is composed of (i) a grid model capturing the communication and management delays, and (ii) run-time distributions of a randomized solver, obtained by running a state-of-the-art SAT solver on a collection of hard instances. The results are experimentally validated in a production level Grid. When solving a single hard SAT instance, the results show that in practice only a relatively small amount of parallelism can be efficiently used; the speedup obtained by increasing parallelism thereafter is negligible. This observation leads to a novel strategy of using grid to solve collections of hard instances. Instead of solving instances one-by-one, the strategy aims at decreasing the overall solution time by applying an alternating distribution schedule.",
+isbn="978-3-540-85110-3"
+}
+
+@misc{fastAnalysisOpenAIo1,
+      title={Fast Analysis of the OpenAI O1-Preview Model in Solving Random K-SAT Problem: Does the LLM Solve the Problem Itself or Call an External SAT Solver?}, 
+      author={Raffaele Marino},
+      year={2024},
+      eprint={2409.11232},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2409.11232}, 
+}
+
+@article{turing,
+    author = {TURING, A. M.},
+    title = "{I.—COMPUTING MACHINERY AND INTELLIGENCE}",
+    journal = {Mind},
+    volume = {LIX},
+    number = {236},
+    pages = {433-460},
+    year = {1950},
+    month = {10},
+    issn = {0026-4423},
+    doi = {10.1093/mind/LIX.236.433},
+    url = {https://doi.org/10.1093/mind/LIX.236.433},
+    eprint = {https://academic.oup.com/mind/article-pdf/LIX/236/433/30123314/lix-236-433.pdf},
+}
+
+@article{dpll,
+author = {Davis, Martin and Logemann, George and Loveland, Donald},
+title = {A machine program for theorem-proving},
+year = {1962},
+issue_date = {July 1962},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {5},
+number = {7},
+issn = {0001-0782},
+url = {https://doi.org/10.1145/368273.368557},
+doi = {10.1145/368273.368557},
+abstract = {The programming of a proof procedure is discussed in connection with trial runs and possible improvements.},
+journal = {Commun. ACM},
+month = jul,
+pages = {394–397},
+numpages = {4}
+}
+
+@INPROCEEDINGS{VSIDS,
+
+  author={Moskewicz, M.W. and Madigan, C.F. and Zhao, Y. and Zhang, L. and Malik, S.},
+
+  booktitle={Proceedings of the 38th Design Automation Conference (IEEE Cat. No.01CH37232)}, 
+
+  title={Chaff: engineering an efficient SAT solver}, 
+
+  year={2001},
+
+  volume={},
+
+  number={},
+
+  pages={530-535},
+
+  keywords={Electronic design automation and methodology;Artificial intelligence;Logic testing;Permission;Electronics packaging;Performance gain;Business continuity;Design engineering;Design automation;NP-complete problem},
+
+  doi={10.1145/378239.379017}}
+
+@ARTICLE{CDCL,
+
+  author={Marques-Silva, J.P. and Sakallah, K.A.},
+
+  journal={IEEE Transactions on Computers}, 
+
+  title={GRASP: a search algorithm for propositional satisfiability}, 
+
+  year={1999},
+
+  volume={48},
+
+  number={5},
+
+  pages={506-521},
+
+  keywords={Algorithm design and analysis;Automatic test pattern generation;Electronic design automation and methodology;Artificial intelligence;Circuit testing;Logic testing;Iterative algorithms;Logic programming;Fault diagnosis},
+
+  doi={10.1109/12.769433}}
+
+@Article{SATInCrypto,
+author={Massacci, Fabio
+and Marraro, Laura},
+title={Logical Cryptanalysis as a SAT Problem},
+journal={Journal of Automated Reasoning},
+year={2000},
+month={Feb},
+day={01},
+volume={24},
+number={1},
+pages={165-203},
+abstract={Cryptographic algorithms play a key role in computer security and the formal analysis of their robustness is of utmost importance. Yet, logic and automated reasoning tools are seldom used in the analysis of a cipher, and thus one cannot often get the desired formal assurance that the cipher is free from unwanted properties that may weaken its strength.},
+issn={1573-0670},
+doi={10.1023/A:1006326723002},
+url={https://doi.org/10.1023/A:1006326723002}
+}
+
+@Article{sbs,
+author={Littman, Michael L.
+and Majercik, Stephen M.
+and Pitassi, Toniann},
+title={Stochastic Boolean Satisfiability},
+journal={Journal of Automated Reasoning},
+year={2001},
+month={Oct},
+day={01},
+volume={27},
+number={3},
+pages={251-296},
+abstract={Satisfiability problems and probabilistic models are core topics of artificial intelligence and computer science. This paper looks at the rich intersection between these two areas, opening the door for the use of satisfiability approaches in probabilistic domains. The paper examines a generic stochastic satisfiability problem, SSAT, which can function for probabilistic domains as SAT does for deterministic domains. It shows the connection between SSAT and well-studied problems in belief network inference and planning under uncertainty, and defines algorithms, both systematic and stochastic, for solving SSAT instances. These algorithms are validated on random SSAT formulae generated under the fixed-clause model. In spite of the large complexity gap between SSAT (PSPACE) and SAT (NP), the paper suggests that much of what we have learned about SAT transfers to the probabilistic domain.},
+issn={1573-0670},
+doi={10.1023/A:1017584715408},
+url={https://doi.org/10.1023/A:1017584715408}
+}
+
+@inproceedings{MiniSAT,
+  title={MiniSat v1.13 - A SAT Solver with Conflict-Clause Minimization},
+  author={Niklas S{\"o}rensson and Niklas E{\'e}n},
+  year={2005},
+  url={https://api.semanticscholar.org/CorpusID:63165862}
+}
+
+@article{ManySAT,
+  title={ManySAT: a Parallel SAT Solver},
+  author={Youssef Hamadi and Sa{\"i}d Jabbour and Lakhdar Sais},
+  journal={J. Satisf. Boolean Model. Comput.},
+  year={2009},
+  volume={6},
+  pages={245-262},
+  url={https://api.semanticscholar.org/CorpusID:4856194}
+}
