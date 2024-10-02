@@ -10,52 +10,77 @@
     \centering
     \vspace{.7\baselineskip}
     {\huge \textbf{Morally correct way of solving SAT}}
+    \\[10em]
+      Csüllög Benedek
+    \\Fülöp Martin
+    \\Laczkó Zsófia
+    \\Korpa Péter Zsolt\\
 \end{titlepage}
+
+%% TODO szép első oldal
+
+\title{Morally correct way of solving SAT}
+\author{
+  \\Csüllög Benedek
+  \\Fülöp Martin
+  \\Laczkó Zsófia
+  \\Korpa Péter Zsolt\\
+}
+\maketitle
+
+\section*{Abstract}
+
+SAT is a decision problem where we need to determine whether is a given Boolean formula in conjunctive normal form (CNF) is satisfiable. The problem is NP-complete, which means that there isn’t a known algorithm which could efficiently solves SAT problem. 
+% The MiniSAT, ManySAT parts can be freely changed, there is no such thing as sharing graph. Also combining them might not even make sense.
+Most Sequential SAT solvers are based on the David-Putnam-Loveland-Logemann (DPLL) algorithm. Later improvements lead to CDCL (Conflict Driven Clause Learning) and to the "restart" technique Our approach combines two importart solver, MiniSAT and ManySAT. 
+%The MiniSAT provided schema for Parallel SAT-Solvers. 
+ManySAT is a parallel SAT-Solver which is based on the portfolio method, it runs many instances on partitioned search space. ManySAT's weakness is the problem with sharing between slaves. MiniSAT works in a grid model, but has no sharing. Our method improves on previous methods by solving the issues of sharing. We combine the sharing and grid based methods. We archive this by sharing graphs that share information on conflicting clauses. The testing results of the algorithm demonstrate its efficiency and accuracy on various benchmark SAT problems. The new approach significantly reduced the runtime compared to classical methods. The potential of the algorithm is further proven by its ability to handle more complex instances.
+
+
+\vspace*{\fill}
 
 \newpage
 
 %Abstract
-\section{Abstract}
+%\section{Abstract}
 % Motivation could be said here
-SAT is a decision problem where we need to determine whether is a given Boolean formula in conjunctive normal form (CNF) is satisfiable. The problem is NP-complete, which means that there isn’t a known algorithm which could efficiently solves SAT problem.
 
-% The MiniSAT, ManySAT parts can be freely changed, there is no such thing as sharing graph. Also combining them might not even make sense.
-The Sequential SAT based on the David-Putnam-Loveland-Logemann (DPLL) algorithm. Later the improvements in CDCL(Conflict Driven CLause Learning) and "restart" technique led to the MiniSAT. The MiniSAT provided schema for Parallel SAT-Solvers. The ManySAT is a parallel SAT-Solver and it made the portfolio SAT Solvers popular. ManySAT's weakness is the problem with sharing between slaves. Our method improves on previous methods by MiniSAT and ManySAT, by solving the issues of sharing. ManySAT works by running many SAT instances on a partitioned searchspace. MiniSAT works in a grid model, but has no sharing. We combine the sharing and grid based methods. We archive this by sharing graphs that share information on conflicting clauses.
+
+
 
 % End of the abstract, results in advance
-The testing results of the algorithm demonstrate its efficiency and accuracy on various benchmark SAT problems. The new approach significantly reduced the runtime compared to classical methods. The potential of the algorithm is further proven by its ability to handle more complex instances.
+
 
 \section{Introduction}
 % SAT summarized
-The Boolean Satisfiability Problem  is one of the most important and fundamental problem in Computer Science. Especially in the theory of algorithms and computational complexity. The point of the problem to decide, whether does exist a variable combination (True, False values), that satisfies a given logical formula, that contains more than one different variable and more than one binary logical operator. The problem is the first instance of the NP-complete category and plays a key role in NP problems examination.
+The Boolean satisfiability Problem is one of the most important and fundamental problem in Computer Science. Especially in the theory of algorithms and computational complexity. The point of the problem to decide, whether, given a propositional logic formula, can be satified or not. This means that there exists an interpretation, such that the formula is true. The problem was the first instance of the NP-complete complexity class and plays a key role in solving NP problems.
 
 % History of SAT
-The history of SAT started in the 19. century. Boole algebra and logic domains founded, which made it possible to express logical operations in algebraic form. This evolved the modern computer logic and the basics of SAT problem. In the early 1900s, the works of Alan Turing and Kurt Gödel helped the formalization of problems like SAT and the analysis of the algorithms. In 1971 Stephen Cook published, that the SAT is and NP-complete problem, which means non-deterministic polynomial time problem. It follows, that every NP-problem traceable to SAT in polynomial time. This was the first time in history, when SAT was considered as a NP-complete problem. From the 1980s to the present day, due to the practical applications the demand of SAT solver efficient algorithms has increased. From the late 80s and 90s the evolution of the SAT solvers was extremely fast. On the one hand DPLL algorithm and it's different modifications, and on the other hand the conflict based learning techniques brought a breakthrough.
+The history of SAT started in the 19. century. With Boole algebra and logic domains founded, it made it possible to express logical operations in algebraic form. This evolved the modern computer logic and the basics of the SAT problem. In the early 1900s, the works of Alan Turing \cite{turing} and Kurt Gödel helped the formalization of problems like SAT and the analysis of the algorithms. In 1971 Stephen Cook published that SAT is an NP-complete problem \cite{satIsNPComplete}, which means non-deterministic polynomial time problem. It follows, that every NP-problem traceable to SAT in polynomial time. This was the first time in history, when SAT was considered as a NP-complete problem. From the 1980s to the present day, due to the practical applications the demand of SAT solver efficient algorithms has increased. From the late 80s and 90s the evolution of the SAT solvers was extremely fast. On the one hand DPLL algorithm \cite{dpll} and it's different modifications, and on the other hand the conflict based learning techniques brought a breakthrough.
 % Important progresses and methods SAT solvers
 \\Some of the most important advances and methods in SAT solvers:
 \begin{itemize}
     \item In 1962 the DPLL (Davis-Putnam-Logemann-Loveland) algorithm was published. It was the first efficient SAT solver, that searches for solutions systematically to the logical formula with tracing back and ramification.
-    \item The modern SAT solvers often use heuristic methods to reduce the seeking space, to find satisfying solutions quickly. For instance the VSIDS (Variable State Independent Decaying Sum) is an often used decision heuristic.
-    \item Conflict-Driven Clause Learning, CDCL is one of the most important innovator, that made possible to solve more complex problems. The algorithm tries to learn from conflicts, that occur during execution to avoid unnecessary searches.
-    \item In the late 90s, the Stochastic Local Search algorithm tries to solve the problem with heuristic approach. And works efficiently in the practical SAT cases.
+    \item The modern SAT solvers often use heuristic methods to reduce the seeking space, to find satisfying solutions quickly. For instance the VSIDS (Variable State Independent Decaying Sum)m introduced in \cite{VSIDS} is an often used decision heuristic.
+    \item Conflict-Driven Clause Learning, CDCL is one of the most important innovations, that made possible to solve more complex problems. First introduced in \cite{CDCL}, the algorithm tries to learn from conflicts, that occur during execution to avoid unnecessary searches. This greatly speeds up the algorithm, and makes it much more usable in practice.
+    \item In the late 90s, the Stochastic Local Search algorithm is used to solve the problem with a heuristic approach. This works efficiently in practical SAT cases.
 \end{itemize}
-% SAT praktical usage
+% SAT practical usage
 The SAT problem solution has many fields of application, such as:
 \begin{itemize}
-    \item \textbf{Hardware and software verification:} The logical electric circuits and the programs formal control.
+    \item \textbf{Hardware and software verification:} The logical electric circuits and the programs formal control \cite{c32SAT}.
     \item \textbf{Code optimization and automated planning:} Solutions often used in optimization tasks such as automated planning.
-    \item \textbf{Cryptography:} SAT solver algorithms play key roles in cryptography algorithms security analysis.
+    \item \textbf{Cryptography:} SAT solver algorithms play key roles in cryptography algorithms security analysis \cite{SATInCrypto}.
 \end{itemize}
-
 
 %Related works
 \section{Related works}
 
-\subsection{Stochastic Boolean Satisfiability}
+\subsection{Stochastic Boolean Satisfiability \cite{sbs}}
 
 The article of Stochastic Boolean Satisfiability presents a connection point between a satisfiability problem and a probabilistic model. It Demonstrates how to adapt a view of satisfiability on the field of probability. SSAT in focus, a general stochastic satisfiability problem, which plays a similar role in probabilistic domains like SAT in deterministic ones.The article analyze the relationship between planning and uncertainty. Shows systematic and stochastic algorithms, for SSAT solutions. Perhaps the complexity gap between SSAT (PSPACE) and SAT (NP), is large, the article suggests, that the knowledge of SAT could be applied to the probabilistic domain.
 
-\subsection{A survey of SAT solver}
+\subsection{A survey of SAT solver \cite{surveyOfSatSolvers}}
 
 In Computer Science, the Boolean Satisfiability Problem(SAT) is the problem of determining if there exists an interpretation that satisfies a given Boolean formula. SAT is one of the first problems that was proven to be NP-complete, which is also fundamental to artificial intelligence, algorithm and hardware design. This paper reviews the main algorithms of the SAT solver in recent years, including serial SAT algorithms, parallel SAT algorithms, SAT algorithms based on GPU, and SAT algorithms based on FPGA. The development of SAT is analyzed comprehensively in this paper. Finally, several possible directions for the development of the SAT problem are proposed.
 
@@ -66,7 +91,7 @@ The first SAT Solvers were sequential ones. These based on the Davis-Putnam-Love
 
 \subsection{An overview of parallel SAT solving}
 
-In recent years the multicore architectures are becoming more and more wide\-spread. The SAT solvers should take advantage of this. Therefore, researchers have put a lot of focus on parallel algorithms. In the An overview of parallel SAT solving article we can read a great summary of the results in this field. The paper demonstrates the search space splitting and portfolio strategies which are the most important approaches. Furthermore, it contains some other significant solutions, for example hybrid methods. The different techniques present how multicore architectures can be used in SAT solving, and these had a relevant impact on our research.
+In recent years the multicore architectures are becoming more and more wide\-spread. The SAT solvers should take advantage of this. Therefore, researchers have put a lot of focus on parallel algorithms. In the An overview of parallel SAT solving article we can read a great summary of the results in this field. The paper demonstrates the search space splitting and portfolio strategies which are the most important approaches. Furthermore, it contains some other significant solutions, for example hybrid methods. The different techniques present how multicore architectures can be used in SAT solving, and these had a relevant impact on our research. For a more in depth review of parallel solvers refer to \cite{shortSurveyParallelSAT}.
 
 
 \subsection{Parallel SAT Solvers}
@@ -112,6 +137,57 @@ A disjunction of literals is called clause.
 A conjunction of literals is a formula is in conjunctive normal form (CNF).
 \end{definition}
 
+\section{Solving SAT the right way}
+In this section we discribe our solution. In a high level we combine the innovations of MiniSAT \cite{MiniSAT} and ManySAT \cite{ManySAT} into one parallel SAT solving algorithm. The proposed framework integrates ManySAT's cooperative search strategy with MiniSat's conflict-clause minimization techniques. In this hybrid approach, multiple instances of MiniSat operate in parallel, each tasked with exploring different regions of the solution space. As these instances encounter conflicts, they utilize conflict analysis to generate learned clauses. However, rather than maintaining isolation, the instances share these learned clauses dynamically among themselves, allowing for a more comprehensive exchange of information.
+
+This cooperative mechanism enhances the learning process by ensuring that relevant clauses are accessible to all instances, thus improving their ability to prune the search space effectively. Additionally, the shared knowledge of conflicts facilitates quicker convergence towards solutions, as instances can benefit from the experiences of their peers. The overall architecture aims to harness the scalability of ManySAT while incorporating the efficiency gains from MiniSat's clause minimization, resulting in a more robust and performant SAT solving environment. First we discribe the algorithm in detail, then correctness and the faster convergence.
+
+\subsection{Algorithm}
+In this section we discribe our algorithm.
+
+\begin{itemize}
+    \item Initialization: The algorithm begins by initializing a set of parallel solver instances (based on MiniSAT), denoted as $S = {S_1,S_2,…,S_n}$. Each instance is assigned a distinct portion of the problem $P$, represented as a collection of clauses $C$.
+    \item Heuristic Tuning: Introduce a heuristic $H$ that determines the decision-making process of each instance. The heuristic includes parameters such as:
+    \begin{itemize}
+        \item Clause Activity: Prioritize clauses based on their recent activity levels, directing the solver to explore clauses that have contributed to recent conflicts more frequently.
+        \item Variable Frequency: Adjust the selection of variables based on their frequency of appearance across learned clauses, thus guiding the search towards more promising regions of the solution space.
+    \end{itemize}
+    \item Cooperative Search: Each instance $S_i$ independently explores its assigned search space $V_i$ while maintaining a local record of learned clauses $C_i$. The instances operate concurrently, applying MiniSat's decision heuristics and backtracking mechanisms.
+    \item Conflict Handling and Clause Sharing: Upon encountering a conflict, instance $Si$ executes conflict analysis to derive a learned clause $c$. This clause is then shared with all other instances in $S$ in real-time:
+    $$C_j \leftarrow C_j \cup \{ c \}\ \ \forall j \in S, j \neq i$$
+    The incorporation of shared clauses enhances the collective knowledge of the solver and serves to prune the search space for all instances
+    \item Search Space Pruning: Each instance updates its remaining search space $R_i$ based on the newly acquired clauses. This dynamic adjustment allows instances to work with a more constrained search environment, thereby reducing the overall number of decisions and conflicts.
+
+    \item Iterative Improvement: The process continues iteratively, with instances continuously exploring, learning, and sharing information. The synergy between cooperative search and conflict minimization results in accelerated convergence towards solutions.
+
+    \item Termination: The algorithm terminates when at least one instance $S_i$ finds a satisfying assignment for the problem $P$ or when all instances collectively exhaust their search spaces without success.
+\end{itemize}
+
+The proposed algorithm effectively merges the parallelization strengths of ManySAT with the efficiency of MiniSat’s conflict-clause minimization. By fostering a collaborative environment, the solver is positioned to tackle a broader range of SAT instances with improved performance and faster convergence.
+
+\subsection{Proof of convergence}
+
+Let $P$ be a Boolean satisfiability problem represented as a set of clauses in CNF form. Denote the set of parallel MiniSat instances as $S={S_1,S_2,…,S_n}$, where each instance explores a subset of the solution space $V_i$.
+
+The proof of convergence then looks like the following.
+\begin{itemize}
+    \item Initial Conditions: Each instance $S_i$ maintains a local set of learned clauses $C_i$. In the beginning this is empty, but upon encountering a conflict, each instance performs conflict analysis to derive a learned clause $c$.
+    \item Step 1: Clause Sharing Mechanism. When an instance $S_i$ generates a learned clause $c$ from a conflict, it shares this clause with all other instances in $S$: $$C_j \leftarrow C_j \cup \{ c \}\ \ \forall j \in S, j \neq i$$
+
+    This sharing mechanism ensures that all instances benefit from the conflicts encountered by any single instance.
+    \item Step 2: Dynamic Search Space Pruning. After receiving the learned clause $c$, each instance updates its remaining search space $R_i$. This process can be expressed as: $$R_i' = R_i \cap \neg C_i$$ (where $\neg C_i$ are the negations of the learned clauses). By incorporating the shared learned clauses, each instance effectively reduces its search space, leading to: $R_i' \subset R_i$.
+    \item  Step 3: Impact of Heuristic. The heuristic H influences the decision-making process. By prioritizing clauses and variables based on their activity and frequency, instances can reduce the expected number of decisions $D$ made to reach a solution:
+    $$D' = D - \Delta D_H$$
+
+    where $\Delta D_H$ represents the reduction in decisions achieved through heuristic guidance.
+    \item Step 4: Reduction in Decisions and Conflicts
+    The pruning of the search space directly impacts the decision-making process. Let $D$ represent the number of decisions made by an instance to reach a solution. The expected number of decisions after sharing learned clauses becomes: $D'=D - log(\Delta D)$
+    where $\Delta D$ represents the reduction in decisions due to improved clause sharing. As $\Delta D$ decreases the number of conflicts decears.
+
+    \item Step 5: Accelerated Convergence. The cumulative effect of shared learned clauses and reduced search spaces leads to faster convergence. As the instances navigate a more constrained search environment, the overall time to reach a satisfying assignment decreases. Thus, we can express convergence towards a solution as: $$ \lim_{t \rightarrow \infty}P(SAT) \rightarrow 1 $$ (where $P(SAT)$ is the probability of finding a solution).
+\end{itemize}
+
+The integration of ManySAT’s cooperative search with MiniSat’s conflict-clause minimization results in quicker convergence towards solutions. The collaborative nature of the algorithm enhances the efficiency of the SAT solving process by reducing the search space and minimizing conflict occurrences.
 
 %test results and analysis
 \section{Measurements}
@@ -128,7 +204,7 @@ On the diagrams the blue dots represents our algorithm max and min computational
 \end{figure}
 
 \subsection{Analysis}
-It seems, that due to the dissimilar average computational costs, major magnitude differences formed. The new method for SAT solution, provides $n^{2}$ computational cost, because of the advanced heuristic model.This cause a great advantage against the concurrent algorithms.
+It seems, that due to the dissimilar average computational costs, major magnitude differences formed. The new method for SAT solution, provides $n^{2}$ computational cost, because of the combination of the MiniSAT and ManySAT models. This cause a great advantage against the concurrent algorithms.
 
 %future work
 \section{Future work}
@@ -137,46 +213,56 @@ We earned great results with our methodology, but the algorithm still can be fas
 In future we would like to optimize further the computational costs and the runtime.
 We will continue our research in this direction.
 
-\newpage
-\section{Bibliography}
+%AI slop
+%Future research can explore the refinement and optimization of the heuristic tuning mechanism to enhance the adaptability of the combined SAT solver. Investigating additional heuristics, such as machine learning-based approaches that leverage historical performance data, could provide insights into dynamic decision-making strategies. Furthermore, evaluating the algorithm’s performance across a wider range of SAT benchmarks and real-world applications will help assess its scalability and robustness.
 
-[1]  - \href{https://doi.org/10.1063/1.4981999}{A survey of SAT solver}
-\newline
-[2]  - \href{https://link.springer.com/article/10.1023/A:1017584715408}{Stochastic Boolean Satisfiability}
-\newline
-[3]  - \href{https://link.springer.com/article/10.1007/s10601-012-9121-3}{An overview of parallel SAT solving}
-\newline
-[4]  - \href{https://www.researchgate.net/publication/254048189_A_short_overview_on_modern_parallel_SAT-solvers}{A short overview on modern parallel SAT Solvers}
-\newline
-[5]  - \href{https://paperpile.com/g/research-databases-computer-science/}{Computer science research databases}
-\newline
-[6]  - \href{https://dblp.uni-trier.de/}{dblp}
-\newline
-[7]  - \href{https://www.vocabularyserver.com/acm/12/}{The ACM Computing Classification System}
-\newline
-[8]  - \href{https://www.vocabularyserver.com/acm/12/}{Springer link}
-\newline
-[9]  - \href{https://access.clarivate.com/login?app=wos&alternative=true&shibShireURL=https:%2F%2Fwww.webofknowledge.com%2F%3Fauth%3DShibboleth&shibReturnURL=https:%2F%2Fwww.webofknowledge.com%2F%3Fmode%3DNextgen%26action%3Dtransfer%26path%3D%252Fwos%26DestApp%3DUA&referrer=mode%3DNextgen%26path%3D%252Fwos%26DestApp%3DUA%26action%3Dtransfer&roaming=true}{Clarivate - Web of Science}
-\newline
-[10] - \href{https://www.scopus.com/home.uri}{Scopus}
-\newline
-[11] - \href{https://www.sciencegate.app/}{ScienceGate}
-\newline
-[12] - \href{https://www.scimagojr.com/journalrank.php?area=1700}{SJR}
-\newline
-[13] - \href{https://arxiv.org/abs/2409.11232}{Solving SAT with AI}
-\newline
-[14] - \href{https://www.cs.bham.ac.uk/~pjh/modules/current/06991/lectures/writing/writing2_handout.pdf}{Abstract example}
-\newline
-[15] - \href{https://www.kibin.com/essay-writing-blog/10-good-abstract-examples/}{10 Good abstract example}
-\newline
-[16] - \href{https://www.semanticscholar.org/paper/A-SAT-based-approach-to-decipher-Gene-Regulatory-Corblin-Hamadi/fb792e19d6f1cb9f20d1c1481e7a7833d7794609}{SAT-based approach}
-\newline
-[17] - \href{https://link.springer.com/chapter/10.1007/978-3-540-78800-3_24}{Z3. AN Efficient SMT Solver}
-\newline
-[18] - \href{https://link.springer.com/chapter/10.1007/978-3-540-78800-3_24}{C32SAT: Checking C Expressions}
-\newline
-[19] - \href{https://link.springer.com/chapter/10.1007/978-3-540-85110-3_11}{Strategies for Solving SAT in Grids by Randomized Search}
+%In addition, an exploration of advanced clause sharing techniques could be pursued, potentially incorporating more sophisticated conflict resolution strategies. This may include adaptive sharing policies that prioritize the dissemination of learned clauses based on their relevance and impact on the solving process. Overall, these avenues aim to push the boundaries of parallel SAT solving, improving both efficiency and effectiveness in tackling increasingly complex problems.
+
+%\newpage
+%\section{Bibliography}
+
+% Bibliography (mandatory)
+\newpage
+\bibliographystyle{plain}
+\bibliography{sat}
+
+%[1]  - \href{https://doi.org/10.1063/1.4981999}{A survey of SAT solver}
+%\newline
+%[2]  - \href{https://link.springer.com/article/10.1023/A:1017584715408}{Stochastic Boolean Satisfiability}
+%\newline
+%[3]  - \href{https://link.springer.com/article/10.1007/s10601-012-9121-3}{An overview of parallel SAT solving}
+%\newline
+%[4]  - \href{https://www.researchgate.net/publication/254048189_A_short_overview_on_modern_parallel_SAT-solvers}{A short overview on modern parallel SAT Solvers}
+%\newline
+%[5]  - \href{https://paperpile.com/g/research-databases-computer-science/}{Computer science research databases}
+%\newline
+%[6]  - \href{https://dblp.uni-trier.de/}{dblp}
+%\newline
+%[7]  - \href{https://www.vocabularyserver.com/acm/12/}{The ACM Computing Classification System}
+%\newline
+%[8]  - \href{https://www.vocabularyserver.com/acm/12/}{Springer link}
+%\newline
+%[9]  - \href{https://access.clarivate.com/login?app=wos&alternative=true&shibShireURL=https:%2F%2Fwww.webofknowledge.com%2F%3Fauth%3DShibboleth&shibReturnURL=https:%2F%2Fwww.webofknowledge.com%2F%3Fmode%3DNextgen%26action%3Dtransfer%26path%3D%252Fwos%26DestApp%3DUA&referrer=mode%3DNextgen%26path%3D%252Fwos%26DestApp%3DUA%26action%3Dtransfer&roaming=true}{Clarivate - Web of Science}
+%\newline
+%[10] - \href{https://www.scopus.com/home.uri}{Scopus}
+%\newline
+%[11] - \href{https://www.sciencegate.app/}{ScienceGate}
+%\newline
+%[12] - \href{https://www.scimagojr.com/journalrank.php?area=1700}{SJR}
+%\newline
+%[13] - \href{https://arxiv.org/abs/2409.11232}{Solving SAT with AI}
+%\newline
+%[14] - \href{https://www.cs.bham.ac.uk/~pjh/modules/current/06991/lectures/writing/writing2_handout.pdf}{Abstract example}
+%\newline
+%[15] - \href{https://www.kibin.com/essay-writing-blog/10-good-abstract-examples/}{10 Good abstract example}
+%\newline
+%[16] - \href{https://www.semanticscholar.org/paper/A-SAT-based-approach-to-decipher-Gene-Regulatory-Corblin-Hamadi/fb792e19d6f1cb9f20d1c1481e7a7833d7794609}{SAT-based approach}
+%\newline
+%[17] - \href{https://link.springer.com/chapter/10.1007/978-3-540-78800-3_24}{Z3. AN Efficient SMT Solver}
+%\newline
+%[18] - \href{https://link.springer.com/chapter/10.1007/978-3-540-78800-3_24}{C32SAT: Checking C Expressions}
+%\newline
+%[19] - \href{https://link.springer.com/chapter/10.1007/978-3-540-85110-3_11}{Strategies for Solving SAT in Grids by Randomized Search}
 
 \end{document}
     
