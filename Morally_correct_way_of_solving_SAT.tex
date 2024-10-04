@@ -67,22 +67,39 @@ ManySAT is a parallel SAT-Solver which is based on the portfolio method, it runs
 % SAT summarized
 The Boolean satisfiability Problem is one of the most important and fundamental problem in Computer Science. Especially in the theory of algorithms and computational complexity. The point of the problem to decide, whether, given a propositional logic formula, can be satified or not. This means that there exists an interpretation, such that the formula is true. The problem was the first instance of the NP-complete complexity class and plays a key role in solving NP problems.
 
-% History of SAT
+\subsection{History of SAT}
 The history of SAT started in the 19. century. With Boole algebra and logic domains founded, it made it possible to express logical operations in algebraic form. This evolved the modern computer logic and the basics of the SAT problem. In the early 1900s, the works of Alan Turing \cite{turing} and Kurt Gödel helped the formalization of problems like SAT and the analysis of the algorithms. In 1971 Stephen Cook published that SAT is an NP-complete problem \cite{satIsNPComplete}, which means non-deterministic polynomial time problem. It follows, that every NP-problem traceable to SAT in polynomial time. This was the first time in history, when SAT was considered as a NP-complete problem. From the 1980s to the present day, due to the practical applications the demand of SAT solver efficient algorithms has increased. From the late 80s and 90s the evolution of the SAT solvers was extremely fast. On the one hand DPLL algorithm \cite{dpll} and it's different modifications, and on the other hand the conflict based learning techniques brought a breakthrough.
-% Important progresses and methods SAT solvers
-\\Some of the most important advances and methods in SAT solvers:
+
+\subsection{Important progresses and methods SAT solvers}
+Some of the most important advances and methods in SAT solvers:
 \begin{itemize}
     \item In 1962 the DPLL (Davis-Putnam-Logemann-Loveland) algorithm was published. It was the first efficient SAT solver, that searches for solutions systematically to the logical formula with tracing back and ramification.
     \item The modern SAT solvers often use heuristic methods to reduce the seeking space, to find satisfying solutions quickly. For instance the VSIDS (Variable State Independent Decaying Sum)m introduced in \cite{VSIDS} is an often used decision heuristic.
     \item Conflict-Driven Clause Learning, CDCL is one of the most important innovations, that made possible to solve more complex problems. First introduced in \cite{CDCL}, the algorithm tries to learn from conflicts, that occur during execution to avoid unnecessary searches. This greatly speeds up the algorithm, and makes it much more usable in practice.
     \item In the late 90s, the Stochastic Local Search algorithm is used to solve the problem with a heuristic approach. This works efficiently in practical SAT cases.
 \end{itemize}
-% SAT practical usage
+
+\subsection{SAT practical usage}
 The SAT problem solution has many fields of application, such as:
 \begin{itemize}
     \item \textbf{Hardware and software verification:} The logical electric circuits and the programs formal control \cite{c32SAT}.
     \item \textbf{Code optimization and automated planning:} Solutions often used in optimization tasks such as automated planning.
     \item \textbf{Cryptography:} SAT solver algorithms play key roles in cryptography algorithms security analysis \cite{SATInCrypto}.
+\end{itemize}
+
+\subsection{Structure of the article}
+The structure of the article could be divided into the following parts, that drives along the Reader through the article:
+\begin{itemize}
+    \item \textbf{Abstract} section contains a summary of the research's problem, goal and methodology.
+    \item \textbf{Introduction} section provides information about the SAT problem and it is historical background and practical usages nowadays.
+    \item In the \textbf{Related works} section the Reader may get information of the most significant researches in the Boolean algebra and Logic domains.
+    \item For better understanding, the Reader may look through the \textbf{Background} section, where helpful logical definitions are presented vagy provided.
+    \item \textbf{Solving SAT the right way} section explains the algorithm developed during the research. Presents its behaviour and novelty in detail.
+    \item \textbf{Measurements} section contains our algorithm's test results compared to concurrent ones. The results are analysed in this section.
+    \item In the \textbf{Discussion} part the the evaluation of the results is taking place. These results are compared to the previously set goals.
+    \item The article's most significant consequences are summarized in the \textbf{Conclusion} section. The Reader is informed about our experiences and achievements.
+    \item \textbf{Future work} section the next research directions and opportunities are discussed, which can result further corrections and additions to our algorithm.
+    \item \textbf{References} section contains all the scientific articles and other sources, that were referenced in this article.
 \end{itemize}
 
 %Related works
@@ -109,7 +126,7 @@ In recent years the multicore architectures are becoming more and more wide\-spr
 \subsection{Parallel SAT Solvers}
 
 At the dawn of the Parallel SAT Solvers, the first Solver only used single-core CPU, and communicated via network. When the memory sharing architectures became available, the scientists made studies on which is faster and supplemented the Parallel SAT Solver with more CPU cores and memory. The first impressions were really great, but later they found out, that if you use too many CPU cores and memory sharing, the efficiency decreases, because of the latency with the shared memory parts and the search for the optimal core slows down the software. The root of the problem was that the solver couldn't handle the underlying hardware very well and the calculations on the other cores wasn't perfectly balanced. So this helped to identify the principles what a many-core SAT Solver should achieve, in order to be an efficient Parallel SAT Solver:
-1. The solver should aware of the hardware components in order to utilize the non-uniform access.
+1+. The solver should aware of the hardware components in order to utilize the non-uniform access.
 2. The solver should exchange the learned clauses and the data between the processes which running on different cores and has to be balanced well from the calculus up to the hardware level.
 So lastly, if you want to create a well designed parallel SAT Solver, you must have a redesigned and reviewed Sequential Solver. It is still an open question that how you can build an efficient SAT Solver with a high level of scalability, combined with the modern multi-core architecture.
 Our work is far from that to be honest, but we made the first step towards a more efficient and more scaleable parallel SAT Solver. The next topic will explain how and what we did to make the humanity closer to this desire.
