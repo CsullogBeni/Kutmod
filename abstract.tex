@@ -6,6 +6,7 @@
 \section{Abstract}
 % Motivation could be said here
 SAT is a decision problem where we need to determine whether is a given Boolean formula in conjunctive normal form (CNF) is satisfiable. The problem is NP-complete, which means that there isn’t a known algorithm which could efficiently solves SAT problem.
+The goal of our research was to find an algorithm which can solve the SAT problem polynomial time, if possible in $\theta(n^2)$.
 
 % The MiniSAT, ManySAT parts can be freely changed, there is no such thing as sharing graph. Also combining them might not even make sense.
 The Sequential SAT based on the David-Putnam-Loveland-Logemann (DPLL) algorithm. Later the improvements in CDCL(Conflict Driven CLause Learning) and "restart" technique led to the MiniSAT. The MiniSAT provided schema for Parallel SAT-Solvers. The ManySAT is a parallel SAT-Solver and it made the portfolio SAT Solvers popular. ManySAT's weakness is the problem with sharing between slaves. Our method improves on previous methods by MiniSAT and ManySAT, by solving the issues of sharing. ManySAT works by running many SAT instancies on a partitioned searchspace. MiniSAT works in a grid model, but has no sharing. We combine the sharing and grid based methods. We achive this by sharing graphs that share information on conflitcting clauses.

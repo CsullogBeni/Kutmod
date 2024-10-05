@@ -43,6 +43,7 @@
 \section*{Abstract}
 
 SAT is a decision problem where we need to determine whether is a given Boolean formula in conjunctive normal form (CNF) is satisfiable. The problem is NP-complete, which means that there isn’t a known algorithm which could efficiently solves SAT problem. 
+The goal of our research was to find an algorithm which can solve the SAT problem polynomial time, if possible in $\theta(n^2)$.
 % The MiniSAT, ManySAT parts can be freely changed, there is no such thing as sharing graph. Also combining them might not even make sense.
 Most Sequential SAT solvers are based on the David-Putnam-Loveland-Logemann (DPLL) algorithm. Later improvements lead to CDCL (Conflict Driven Clause Learning) and to the "restart" technique Our approach combines two importart solver, MiniSAT and ManySAT. 
 %The MiniSAT provided schema for Parallel SAT-Solvers. 
@@ -86,6 +87,9 @@ The SAT problem solution has many fields of application, such as:
     \item \textbf{Code optimization and automated planning:} Solutions often used in optimization tasks such as automated planning.
     \item \textbf{Cryptography:} SAT solver algorithms play key roles in cryptography algorithms security analysis \cite{SATInCrypto}.
 \end{itemize}
+
+\subsection{Research question}
+As demonstrated above, there are many fields that applicate the solution of SAT problem. Our goal was to support this fields with an algorithm that has a better runtime than the previously known solutions. We have earned $\theta(n^2)$ computational cost successful. This can be a significant breakthrough in the solution of NP-complete problems.
 
 \subsection{Structure of the article}
 The structure of the article could be divided into the following parts, that drives along the Reader through the article:
