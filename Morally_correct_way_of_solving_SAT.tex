@@ -41,6 +41,7 @@
 \maketitle
 
 \section*{Abstract}
+\label{sec:abstract}
 
 SAT is a decision problem where we need to determine whether is a given Boolean formula in conjunctive normal form (CNF) is satisfiable. The problem is NP-complete, which means that there isn’t a known algorithm which could efficiently solves SAT problem. 
 The goal of our research was to find an algorithm which can solve the SAT problem polynomial time, if possible in $\theta(n^2)$.
@@ -65,6 +66,8 @@ ManySAT is a parallel SAT-Solver which is based on the portfolio method, it runs
 
 
 \section{Introduction}
+\label{sec:intro}
+
 % SAT summarized
 The Boolean satisfiability Problem is one of the most important and fundamental problem in Computer Science. Especially in the theory of algorithms and computational complexity. The point of the problem to decide, whether, given a propositional logic formula, can be satified or not. This means that there exists an interpretation, such that the formula is true. The problem was the first instance of the NP-complete complexity class and plays a key role in solving NP problems.
 
@@ -94,20 +97,21 @@ As demonstrated above, there are many fields that applicate the solution of SAT 
 \subsection{Structure of the article}
 The structure of the article could be divided into the following parts, that drives along the Reader through the article:
 \begin{itemize}
-    \item \textbf{Abstract} section contains a summary of the research's problem, goal and methodology.
-    \item \textbf{Introduction} section provides information about the SAT problem and it is historical background and practical usages nowadays.
-    \item In the \textbf{Related works} section the Reader may get information of the most significant researches in the Boolean algebra and Logic domains.
-    \item For better understanding, the Reader may look through the \textbf{Background} section, where helpful logical definitions are presented vagy provided.
-    \item \textbf{Solving SAT the right way} section explains the algorithm developed during the research. Presents its behaviour and novelty in detail.
-    \item \textbf{Measurements} section contains our algorithm's test results compared to concurrent ones. The results are analysed in this section.
-    \item In the \textbf{Discussion} part the the evaluation of the results is taking place. These results are compared to the previously set goals.
-    \item The article's most significant consequences are summarized in the \textbf{Conclusion} section. The Reader is informed about our experiences and achievements.
-    \item \textbf{Future work} section the next research directions and opportunities are discussed, which can result further corrections and additions to our algorithm.
-    \item \textbf{References} section contains all the scientific articles and other sources, that were referenced in this article.
+    \item \hyperref[sec:abstract]{\textbf{Abstract}} section contains a summary of the research's problem, goal and methodology.
+    \item \hyperref[sec:intro]{\textbf{Introduction}} section provides information about the SAT problem and it is historical background and practical usages nowadays.
+    \item In the \hyperref[sec:relwork]{\textbf{Related works}} section the Reader may get information of the most significant researches in the Boolean algebra and Logic domains.
+    \item For better understanding, the Reader may look through the \hyperref[sec:background]{\textbf{Background}} section, where helpful logical definitions are presented vagy provided.
+    \item \hyperref[sec:methodology]{\textbf{Solving SAT the right way}} section explains the algorithm developed during the research. Presents its behaviour and novelty in detail.
+    \item \hyperref[sec:measurements]{\textbf{Measurements}} section contains our algorithm's test results compared to concurrent ones. The results are analysed in this section.
+    \item In the \hyperref[sec:discussion]{\textbf{Discussion}} part the the evaluation of the results is taking place. These results are compared to the previously set goals.
+    \item The article's most significant consequences are summarized in the \hyperref[sec:conclusion]{\textbf{Conclusion}} section. The Reader is informed about our experiences and achievements.
+    \item \hyperref[sec:future]{\textbf{Future work}} section the next research directions and opportunities are discussed, which can result further corrections and additions to our algorithm.
+    \item \hyperref[sec:bib]{\textbf{References}} section contains all the scientific articles and other sources, that were referenced in this article.
 \end{itemize}
 
 %Related works
 \section{Related works}
+\label{sec:relwork}
 
 \subsection{Stochastic Boolean Satisfiability \cite{sbs}}
 
@@ -137,6 +141,8 @@ Our work is far from that to be honest, but we made the first step towards a mor
 
 %Background
 \section{Background}
+\label{sec:background}
+
 SAT problem is about satisfiability of Boolean formulas in conjunctive normal form (CNF). The necessary definitions for this can be read below. The definitions are valid in propositional logic.
 \subsection{Boolean formulas and satisfiability}
 \begin{definition}
@@ -171,6 +177,8 @@ A conjunction of literals is a formula is in conjunctive normal form (CNF).
 \end{definition}
 
 \section{Solving SAT the right way}
+\label{sec:methodology}
+
 In this section we discribe our solution. In a high level we combine the innovations of MiniSAT \cite{MiniSAT} and ManySAT \cite{ManySAT} into one parallel SAT solving algorithm. The proposed framework integrates ManySAT's cooperative search strategy with MiniSat's conflict-clause minimization techniques. In this hybrid approach, multiple instances of MiniSat operate in parallel, each tasked with exploring different regions of the solution space. As these instances encounter conflicts, they utilize conflict analysis to generate learned clauses. However, rather than maintaining isolation, the instances share these learned clauses dynamically among themselves, allowing for a more comprehensive exchange of information.
 
 This cooperative mechanism enhances the learning process by ensuring that relevant clauses are accessible to all instances, thus improving their ability to prune the search space effectively. Additionally, the shared knowledge of conflicts facilitates quicker convergence towards solutions, as instances can benefit from the experiences of their peers. The overall architecture aims to harness the scalability of ManySAT while incorporating the efficiency gains from MiniSat's clause minimization, resulting in a more robust and performant SAT solving environment. First we discribe the algorithm in detail, then correctness and the faster convergence.
@@ -224,6 +232,8 @@ The integration of ManySAT’s cooperative search with MiniSat’s conflict-clau
 
 %test results and analysis
 \section{Measurements}
+\label{sec:measurements}
+
 In this section below, the test results of the new algorithm can be seen. The SAT problem is NP-complete, which means most of the modern algorithms' computational cost are close to exponential. But our method provides $n^{2}$ computational cost.
 
 \subsection{Test results}
@@ -241,14 +251,19 @@ It seems, that due to the dissimilar average computational costs, major magnitud
 
 % Discussion
 \section{Discussion}
+\label{sec:discussion}
+
 As we saw earlier, the testing results proved that our algorithm reached better runtime and saved some hardware resources as well. The potential of the algorithm is significant, and we can use it for further researches. The A* algorithm gave a good base for our work, because it worked with minimum case heuristic and it gives an optimal result.
 
 % Conclusion
 \section{Conclusion}
+\label{sec:conclusion}
+
 The overall impression of our method is more than satisfying. We made an optimized algorithm with $n^2$ computational cost. As we discussed before, we've used MiniSAT with ManySAT to earn this result. It made our method better than the concurrent ones. The next steps and our future plans will be described in the Future Work section.
 
 %future work
 \section{Future work}
+\label{sec:future}
 
 We earned great results with our methodology, but the algorithm still can be faster.
 In future we would like to optimize further the computational costs and the runtime.
@@ -271,6 +286,7 @@ Our goal is to decrease the execution time of our algorithm from $\theta(n^2)$ t
 \newpage
 \bibliographystyle{plain}
 \bibliography{sat}
+\label{sec:bib}
 
 %[1]  - \href{https://doi.org/10.1063/1.4981999}{A survey of SAT solver}
 %\newline
