@@ -120,7 +120,7 @@ The first SAT Solvers were sequential ones. These based on the Davis-Putnam-Love
 
 \subsection{An overview of parallel SAT solving}
 
-In recent years the multicore architectures are becoming more and more wide\-spread. The SAT solvers should take advantage of this. Therefore, researchers have put a lot of focus on parallel algorithms. In the An overview of parallel SAT solving article we can read a great summary of the results in this field. The paper demonstrates the search space splitting and portfolio strategies which are the most important approaches. Furthermore, it contains some other significant solutions, for example hybrid methods. The different techniques present how multicore architectures can be used in SAT solving, and these had a relevant impact on our research. For a more in depth review of parallel solvers refer to \cite{shortSurveyParallelSAT}.
+In recent years the multicore architectures are becoming more and more wide\-spread. The SAT solvers should take advantage of this. Therefore, researchers have put a lot of focus on parallel algorithms. In the An overview of parallel SAT solving article we can read a great summary of the results in this field. The paper demonstrates the search space splitting and portfolio strategies which are the most important approaches. Furthermore, it contains some other significant solutions, for example hybrid methods. The different techniques present how multicore architectures can be used in SAT solving, and these had a relevant impact on our research. For a more in depth review of parallel solvers refer to \cite{paralellSAT}.
 
 
 \subsection{Parallel SAT Solvers}
@@ -249,6 +249,11 @@ The overall impression of our method is more than satisfying. We made an optimiz
 We earned great results with our methodology, but the algorithm still can be faster.
 In future we would like to optimize further the computational costs and the runtime.
 We will continue our research in this direction.
+Our goal is to decrease the execution time of our algorithm from $\theta(n^2)$ to $\theta (n*log(n))$. This would mean an even bigger breakthrough in the practical application of the SAT problem. 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{img/futurework.png}
+\end{figure}
 
 %AI slop
 %Future research can explore the refinement and optimization of the heuristic tuning mechanism to enhance the adaptability of the combined SAT solver. Investigating additional heuristics, such as machine learning-based approaches that leverage historical performance data, could provide insights into dynamic decision-making strategies. Furthermore, evaluating the algorithm’s performance across a wider range of SAT benchmarks and real-world applications will help assess its scalability and robustness.
@@ -302,4 +307,3 @@ We will continue our research in this direction.
 %[19] - \href{https://link.springer.com/chapter/10.1007/978-3-540-85110-3_11}{Strategies for Solving SAT in Grids by Randomized Search}
 
 \end{document}
-    
