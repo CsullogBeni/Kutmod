@@ -100,7 +100,7 @@ The structure of the article could be divided into the following parts, that dri
     \item \hyperref[sec:abstract]{\textbf{Abstract}} section contains a summary of the research's problem, goal and methodology.
     \item \hyperref[sec:intro]{\textbf{Introduction}} section provides information about the SAT problem and it is historical background and practical usages nowadays.
     \item In the \hyperref[sec:relwork]{\textbf{Related works}} section the Reader may get information of the most significant researches in the Boolean algebra and Logic domains.
-    \item For better understanding, the Reader may look through the \hyperref[sec:background]{\textbf{Background}} section, where helpful logical definitions are presented vagy provided.
+    \item For better understanding, the Reader may look through the \hyperref[sec:background]{\textbf{Background}} section, where helpful logical definitions are given.
     \item \hyperref[sec:methodology]{\textbf{Solving SAT the right way}} section explains the algorithm developed during the research. Presents its behaviour and novelty in detail.
     \item \hyperref[sec:measurements]{\textbf{Measurements}} section contains our algorithm's test results compared to concurrent ones. The results are analysed in this section.
     \item In the \hyperref[sec:discussion]{\textbf{Discussion}} part the the evaluation of the results is taking place. These results are compared to the previously set goals.
@@ -181,22 +181,44 @@ A conjunction of literals is a formula is in conjunctive normal form (CNF).
 
 In this section we discribe our solution. In a high level we combine the innovations of MiniSAT \cite{MiniSAT} and ManySAT \cite{ManySAT} into one parallel SAT solving algorithm. The proposed framework integrates ManySAT's cooperative search strategy with MiniSat's conflict-clause minimization techniques. In this hybrid approach, multiple instances of MiniSat operate in parallel, each tasked with exploring different regions of the solution space. As these instances encounter conflicts, they utilize conflict analysis to generate learned clauses. However, rather than maintaining isolation, the instances share these learned clauses dynamically among themselves, allowing for a more comprehensive exchange of information.
 
-This cooperative mechanism enhances the learning process by ensuring that relevant clauses are accessible to all instances, thus improving their ability to prune the search space effectively. Additionally, the shared knowledge of conflicts facilitates quicker convergence towards solutions, as instances can benefit from the experiences of their peers. The overall architecture aims to harness the scalability of ManySAT while incorporating the efficiency gains from MiniSat's clause minimization, resulting in a more robust and performant SAT solving environment. First we discribe the algorithm in detail, then correctness and the faster convergence.
+This cooperation between instances enhance the learning process by ensuring that the already accessed clauses are accessible, thus eliminating potential useless work. Additionally, the shared knowledge of conflicts facilitates quicker convergence towards solutions, as instances can benefit from the shared clauses. The overall architecture aims to harness the scalability of ManySAT while incorporating the efficiency gains from MiniSat's clause minimization, resulting in a more robust and performant SAT solving technique. First we describe the algorithm in detail, then we give an high level proof of correctness and the faster convergence.
 
 \subsection{Algorithm}
 In this section we discribe our algorithm.
 
+\begin{algorithm}
+\caption{Clause sharing}\label{alg:cap}
+\KwData{D : Set of clasuses}
+\KwResult{S : Bool}
+ $\forall i, S_i \gets MiniSat\_Init$ \;
+ $D_i \gets Partition D$\;
+ $S \gets false$\;
+ $d \gets 1$
+ $confPool \gets ConflictPool_Init$\;
+ \While{$\neg S$}{
+  Solve $D_i$ with each $S_i$, with depth d\;
+  \eIf{$S_i$ found conflicting clauses}{
+   Add the conflict to $confpool$\;
+   $d \gets d + f($confPool.numOfClauses$)$\;
+   }{
+   Partition each $D_i$ further\;
+  }
+ }
+\end{algorithm}
+
+The $f(x)$ function is freely choosable, but testing has shows that the best result come from $log$.
+
 \begin{itemize}
-    \item Initialization: The algorithm begins by initializing a set of parallel solver instances (based on MiniSAT), denoted as $S = {S_1,S_2,…,S_n}$. Each instance is assigned a distinct portion of the problem $P$, represented as a collection of clauses $C$.
+    \item Initialization: We first initialize a set of parallel solver instances (based on MiniSAT), denoted as $S = {S_1,S_2,…,S_n}$. Each instance is assigned a distinct portion of the problem $P$, represented as a collection of clauses $C$.
     \item Heuristic Tuning: Introduce a heuristic $H$ that determines the decision-making process of each instance. The heuristic includes parameters such as:
     \begin{itemize}
         \item Clause Activity: Prioritize clauses based on their recent activity levels, directing the solver to explore clauses that have contributed to recent conflicts more frequently.
         \item Variable Frequency: Adjust the selection of variables based on their frequency of appearance across learned clauses, thus guiding the search towards more promising regions of the solution space.
     \end{itemize}
     \item Cooperative Search: Each instance $S_i$ independently explores its assigned search space $V_i$ while maintaining a local record of learned clauses $C_i$. The instances operate concurrently, applying MiniSat's decision heuristics and backtracking mechanisms.
-    \item Conflict Handling and Clause Sharing: Upon encountering a conflict, instance $Si$ executes conflict analysis to derive a learned clause $c$. This clause is then shared with all other instances in $S$ in real-time:
-    $$C_j \leftarrow C_j \cup \{ c \}\ \ \forall j \in S, j \neq i$$
-    The incorporation of shared clauses enhances the collective knowledge of the solver and serves to prune the search space for all instances
+    \item Conflict Handling and Clause Sharing: Upon encountering a conflict, instance $Si$ executes conflict analysis to derive a learned clause $c$. This clause is then shared with all other instances in $S$ in real-time.
+    % $$C_j \leftarrow C_j \cup \{ c \}\ \ \forall j \in S, j \neq i$$
+    The incorporation of shared clauses enhances the collective knowledge of the solver and serves to prune the search space for all instances.
     \item Search Space Pruning: Each instance updates its remaining search space $R_i$ based on the newly acquired clauses. This dynamic adjustment allows instances to work with a more constrained search environment, thereby reducing the overall number of decisions and conflicts.
 
     \item Iterative Improvement: The process continues iteratively, with instances continuously exploring, learning, and sharing information. The synergy between cooperative search and conflict minimization results in accelerated convergence towards solutions.
@@ -213,7 +235,7 @@ Let $P$ be a Boolean satisfiability problem represented as a set of clauses in C
 The proof of convergence then looks like the following.
 \begin{itemize}
     \item Initial Conditions: Each instance $S_i$ maintains a local set of learned clauses $C_i$. In the beginning this is empty, but upon encountering a conflict, each instance performs conflict analysis to derive a learned clause $c$.
-    \item Step 1: Clause Sharing Mechanism. When an instance $S_i$ generates a learned clause $c$ from a conflict, it shares this clause with all other instances in $S$: $$C_j \leftarrow C_j \cup \{ c \}\ \ \forall j \in S, j \neq i$$
+    \item Step 1: Clause Sharing Mechanism. When an instance $S_i$ generates a learned clause $c$ from a conflict, it shares this clause with all other instances in $S$. %$$C_j \leftarrow C_j \cup \{ c \}\ \ \forall j \in S, j \neq i$$
 
     This sharing mechanism ensures that all instances benefit from the conflicts encountered by any single instance.
     \item Step 2: Dynamic Search Space Pruning. After receiving the learned clause $c$, each instance updates its remaining search space $R_i$. This process can be expressed as: $$R_i' = R_i \cap \neg C_i$$ (where $\neg C_i$ are the negations of the learned clauses). By incorporating the shared learned clauses, each instance effectively reduces its search space, leading to: $R_i' \subset R_i$.
@@ -267,8 +289,8 @@ The overall impression of our method is more than satisfying. We made an optimiz
 
 We earned great results with our methodology, but the algorithm still can be faster.
 In future we would like to optimize further the computational costs and the runtime.
-We will continue our research in this direction.
-Our goal is to decrease the execution time of our algorithm from $\theta(n^2)$ to $\theta (n*log(n))$. This would mean an even bigger breakthrough in the practical application of the SAT problem. 
+We will continue our research in this direction. 
+Our goal is to decrease the execution time of our algorithm from $\theta(n^2)$ to $\theta (n*log(n))$. This would mean an even bigger breakthrough in the practical application of the SAT problem. We also think that for the $f$ parameter shown in section 4.1 could be improved a lot. We tried out many trivial functions and landed on $log$.
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\linewidth]{img/futurework.png}
