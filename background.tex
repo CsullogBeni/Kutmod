@@ -8,13 +8,15 @@
 
 
 \section{Background}
-SAT problem is about satisfiability of Boolean formulas in conjunctive normal form (CNF). The necessary definitions for this can be read below. The definitions are valid in propositional logic.
-\subsection{Boolean formulas and satisfiability}
+SAT problem is about satisfiability of Boolean formulas in conjunctive normal form (CNF). To analyse this kind of formulas, some concepts need to be defined. On one hand we need to talk about Boolean formulas in general and then their required special form. On the other hand, we have to clarify what satisfiability means. The necessary definitions for this can be read below. These are valid in propositional logic.
+
+\subsection{Boolean formulas}
+First of all, we have to define what are propositional variables, then how can we create formulas from them. In addition to these it is important to define interpretation with which we can give a logical value for variables.
 \begin{definition}
 In propositional logic we use symbols to represent propositions, these symbols called propositional variable which can be true or false.
 \end{definition}
 \begin{definition}
-Interpretation is a function which maps propositional variables to logical values (true or false). In other words, the interpretation determines whether the value of a variable is true or false).
+Interpretation is a function which maps propositional variables to logical values (true or false). In other words, the interpretation determines whether the value of a variable is true or false.
 \end{definition}
 \begin{definition}
 \begin{enumerate}
@@ -24,13 +26,9 @@ Interpretation is a function which maps propositional variables to logical value
 \end{enumerate}
 Every formula is created by using the previous rules finitely many times.
 \end{definition}
-\begin{definition}
-An interpretation satisfies a formula if the formula is true in that interpretation.
-\end{definition}
-\begin{definition}
-A formula is satisfiable, if exists an interpretation which satisfies it, otherwise it is unsatisfiable.
-\end{definition}
+
 \subsection{Conjunctive normal form}
+First, we have to define literals and for them clauses. Then we can clarify what are formulas in conjunctive normal form which are the SAT is about.
 \begin{definition}
 A propositional variable ($X$) and its negated form ($\neg X$) are called literals.
 \end{definition}
@@ -38,8 +36,16 @@ A propositional variable ($X$) and its negated form ($\neg X$) are called litera
 A disjunction of literals is called clause.
 \end{definition}
 \begin{definition}
-A conjunction of literals is a formula is in conjunctive normal form (CNF).
+A conjunction of clauses is a formula is in conjunctive normal form (CNF).
 \end{definition}
 
+\subsection{Satisfiability}
+SAT problem is about satisfiability of a formula in conjunctive normal form. Now we define what it means when an interpretation satisfies a formula, and how a formula can be satisfiable.
+\begin{definition}
+An interpretation satisfies a formula if the formula is true in that interpretation.
+\end{definition}
+\begin{definition}
+A formula is satisfiable, if exists an interpretation which satisfies it, otherwise it is unsatisfiable.
+\end{definition}
 
 \end{document}
