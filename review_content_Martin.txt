@@ -1,0 +1,65 @@
+Review form must contain (write about each item 1-2 sentences):
+ 
+Recommendation: strong reject, reject, weak reject,
+borderline, weak accept, accept, strong accept (-3 .. 3): 3
+Everyone whos like to know more about latency bottlenecks should read this research.
+It provides useful informations with an easily understandable composition.;
+
+Summary of the content and Evaluation of
+Technical Content and Accuracy (1 - 7) 5:
+They achieved promising results and I think the topic requires further
+researches. However, they mentioned that they "bombarded" the server with their requests,
+which was a live server with legitimate users, and it was a really beginner type mistake.
+
+Significance of the Work (1 - 7) 7: 
+As they mentioned, the web applications dominate daily websites and I strongly
+aggree with this. Because of that, these kind of researches are more than neccessary.
+
+Appropriate Title, Introduction, and Conclusion (1 - 7)7: 
+Everything were appropriate. The introduction really helped to understand the
+basic concept and the conclusion gathered every important informations.
+
+Overall Organization (1 - 7)7: The overall organization is good.
+Every piece were in the right place.
+
+Appropriateness for the conf/journal (1 - 7)7: 
+As I mentioned before, these kinds of researches are neccessary,
+so this research is highly appropiate for conf/journal.
+
+Style and Clarity of the Paper (1 - 7)7: 
+The style and clarity were great. The language were appropiate,
+and the explanitions were easily understandable.
+
+Originality of Content (1 - 7)7: 
+They used past researches, however their research contained other perspectives,
+which are important for example they pointed that the rise of the latency can cause
+decrease in income.
+
+Novelty of results: beyond state of the art (related work)?:
+Their results are not beyond the state of the art, however it contains useful
+informations and directions where should researchers continue looking for.
+
+Appropriateness of the methods, validation, references
+Every method,validation and reference were appropiate and came from legal researchers
+and researches.;
+
+Comments on errors, typos, grammar, figures:
+You should avoid of using aphostrophes in professional research publications.
+It makes you unprofessional.;
+
+Proposal for improvements: You have mentioned that your approach can not track problems with
+memory or CPU utilization. I think you should maybe test on different servers or use
+virtual servers with different hardware initializations and maybe it will help you to
+determine these kind of problems as well, or atleast gives you a great basic for further
+analysis.
+
+Reviewers confidence and Confidential remarks:
+I think this topic was great and worth for further researches.
+My confidential remark is that you have mentioned the live server issue was not a great idea.
+It showed that you are all humans as well, and make mistakes and that is okay. However, you
+can lose other reviewers' confidence, and it would be really unpleasant for you.;
+
+Checking for plagiarism and violation of guidelines:
+I have not found any plagiarism or violation.;
+
+Remark: realistic
