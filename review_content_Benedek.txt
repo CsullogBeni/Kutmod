@@ -1,0 +1,50 @@
+Review form must contain (write about each item 1-2 sentences):
+ 
+Recommendation: strong reject, reject, weak reject,
+borderline, weak accept, accept, strong accept (-3 .. 3): 2
+The article presents an interesting innovation about bottlenecks solving a major problem. Those who work in the field of network monitoring, must read the article.
+
+Summary of the content and Evaluation of
+Technical Content and Accuracy (1 - 7): 6
+Most of the important informations can be found in the summary, but the key parts in the evaluation of the technical content were not explained properly.
+
+Significance of the Work (1 - 7): 6
+As presented in the article, there are many problems throughout the bottlenecks and the research's new approach can be a suitable solution for them.
+
+Appropriate Title, Introduction, and Conclusion (1 - 7): 7
+In my humble opinion the title was descriptive enought. The introduciton part was essential. The conclusion part was full of useful information as well.
+
+Overall Organization (1 - 7): 7
+I found every key part, that a research article requires. The structure of the article was logical.
+
+Appropriateness for the conf/journal (1 - 7): 7
+The artical presents a suitable solution on the field of bottlenecks, due to this fact, I can highly recommend it for conf/journal.
+
+Style and Clarity of the Paper (1 - 7): 6
+The content was easy to understand, but also down-to-earth and went into the depths. In some places, the paper went into excessive detail.
+
+Originality of Content (1 - 7): 7
+In the introduction part it was mentioned that the research group tried to invetigate another (economy) point of view beside the scientific research. It seems to me this is a new, original idea.
+
+Novelty of results: beyond state of the art (related work)?
+In the Results section I could find impressive results, that ensures me, the methodology can be used widely.
+
+Appropriateness of the methods, validation, references;
+The methodology in general explained in detail, from the mapping procedure to the measuerements. The writers took time to explain the validation of the methodology, that I find as great point. The references are located where they should be and the main related articles and sources can be found in that section as well.
+
+Comments on errors, typos, grammar, figures;
+Aphostrophes shouldn't be used in the research article, but on the other hand I didn't find any grammar issue or typos.
+
+Proposal for improvements;
+The article mentions that the methodology requires specific conditions to work properly (e.g., two components are needed). It seems there are many opportunities for further development in this field.
+
+Reviewers confidence and Confidential remarks;
+I enjoyed both the article and the opportunity to learn more about this research area.
+
+Checking for plagiarism and violation of guidelines;
+I haven't found any sign of plagiarism or violation.
+
+Remark: be professional, pleasant, helpful, scientific, timely,
+realistic, respectful
+Realistic because it seems a good solution was found for the problem.
+(Also helpful, beacause the articel presents the problem in detail. Interesting for a person who is not an expert in this field.)
