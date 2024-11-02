@@ -1,0 +1,18 @@
+# Title 
+With the Angry Goats team, we have conducted research on the SAT problem and developed a new, innovative algorithm to solve it. You may have learned about this problem in computational theory.
+
+# Overview
+As you will see throughout the presentation, we will discuss each point in detail. Each point represents a milestone in our research.present each milestone of the research.
+
+# Famous approaches
+In this section, I will discuss the major breakthroughs in the field of SAT solvers, highlighting the most innovative algorithms that have been developed to solve SAT over time.
+•	In 1962, the DPLL (Davis-Putnam-Logemann-Loveland) algorithm was published. It was the first efficient SAT solver, systematically searching for solutions to the logical formula with backtracking and branching.
+•	Modern SAT solvers often use heuristic methods to reduce the search space and quickly find satisfying solutions. For instance, the VSIDS (Variable State Independent Decaying Sum) heuristic is commonly used as a decision-making tool.
+•	Conflict-Driven Clause Learning (CDCL) is another major innovation, allowing more complex problems to be solved. This algorithm learns from conflicts that occur during execution to avoid unnecessary searches. This greatly speeds up the algorithm and makes it much more practical.
+•	In the late 1990s, the Stochastic Local Search algorithm began being used to solve the SAT problem with a heuristic approach. This method works efficiently in practical SAT cases.
+
+# Measurements
+We implemented our methodology along with the algorithms mentioned in the Famous Approaches section. We tested these algorithms on the same logical formulas, containing between 1 and 4 propositional variables. As shown in the picture, the blue dots represent our algorithm’s computational cost, while the red dots represent the lowest computational cost achieved by other competing algorithms. Given that the SAT problem was NP-complete, the concurrent algorithms solved the problem in exponential time.
+
+# Results
+The main result is that the computational cost of our algorithm was theta of n squared. Our algorithm is significantly more efficient than the competing ones, thanks to a new approach and a novel heuristic. This new algorithm has the potential to reshape the approach to the SAT problem on a global scale.
