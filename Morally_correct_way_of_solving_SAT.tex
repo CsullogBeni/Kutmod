@@ -79,7 +79,7 @@ The history of SAT started in the 19. century. With Boole algebra and logic doma
 Some of the most important advances and methods in SAT solvers:
 \begin{itemize}
     \item In 1962 the DPLL (Davis-Putnam-Logemann-Loveland) algorithm was published. It was the first efficient SAT solver, that searches for solutions systematically to the logical formula with tracing back and ramification.
-    \item The modern SAT solvers often use heuristic methods to reduce the seeking space, to find satisfying solutions quickly. For instance the VSIDS (Variable State Independent Decaying Sum)m introduced in \cite{VSIDS} is an often used decision heuristic.
+    \item The modern SAT solvers often use heuristic methods to reduce the seeking space, to find satisfying solutions quickly. For instance the VSIDS (Variable State Independent Decaying Sum) introduced in \cite{VSIDS}. It is an often used decision heuristic.
     \item Conflict-Driven Clause Learning, CDCL is one of the most important innovations, that made possible to solve more complex problems. First introduced in \cite{CDCL}, the algorithm tries to learn from conflicts, that occur during execution to avoid unnecessary searches. This greatly speeds up the algorithm, and makes it much more usable in practice.
     \item In the late 90s, the Stochastic Local Search algorithm is used to solve the problem with a heuristic approach. This works efficiently in practical SAT cases.
 \end{itemize}
