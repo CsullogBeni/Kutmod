@@ -1,0 +1,16 @@
+# Fields of applications
+
+Our results have far reaching applications. 
+As SAT solving in NP-complete, all NP-complete propblems can be reduced to it, meaning its enought to have a fast SAT solver to solve all kinds of practical NP-complete problems. These problems range from curcit design and static program analisys to cryptographical algorithms and optimalization problems.
+
+# Motivation
+
+The main motivation behind our research comes from trying to improve upon existing paralel-SAT solvers. The topic is very competative, there are many attempts at faster and faster constructions. So our motivation if twofold, "elegant" and fast paralell SAT solving is theoritically challenging, and also because of the application of SAT solvers, they are also very much needed.
+
+# Methodology 1
+
+Our methodology is built on existing SAT solvers that we combined in a way that outperforms either. We utalized MiniSAT-s conflict-clause minimization techniques. Our approach is to run several MiniSAT agents in a tree in the fashion of ManySAT, that are capable of sharing information conflicting clause thereby minimizing search time. This way of combining then is uniqe to our reseach and allows for extra innovations like better heuristical control.
+
+# Methodology 2
+
+Here we can se a pesudocode of our approach. We dont go into the detail of the correctness of the algorithm. 
