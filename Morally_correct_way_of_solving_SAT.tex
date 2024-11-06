@@ -264,6 +264,8 @@ The integration of ManySAT cooperative search with MiniSat conflict-clause minim
 In this section below, the test results of the new algorithm can be seen. The SAT problem is NP-complete, which means most of the computational cost of the modern algorithms are close to exponential. But our method provides $n^{2}$ computational cost.
 
 \subsection{Test results}
+Before testing we must had to implement the new algorithm and the concurrent ones. Both of the algorithms were needed to be able to take the same paramters. Naturally we had some issues during the implementation of the algorithms. For instance we had to handle all edge cases. But after all we had correct implementations, and we could start testing.
+
 During testing we ran our algorithm and one of our most efficient on SAT problems. We tried the algorithms on logical formulas, that contains 1 to 4 logical variables. The methods got the same formulas, problems. The results of the executions are shown the diagrams below.
 
 On the diagrams which can be seen on figure~\ref{fig:measurements} the blue dots represents our algorithm max and min computational costs for each amounts of logical variables. The red dots represents the concurrent algorithms minimal computational cost. The blue line shows the average costs of our algorithm, the read one belongs to the best concurrent algorithms. For instance the SAT-3 problem solved in only 9 steps.
