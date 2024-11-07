@@ -135,7 +135,7 @@ At the dawn of the Parallel SAT Solvers, the first Solver only used single-core 
 1+. The solver should aware of the hardware components in order to utilize the non-uniform access.
 2. The solver should exchange the learned clauses and the data between the processes which running on different cores and has to be balanced well from the calculus up to the hardware level.
 So lastly, if you want to create a well designed parallel SAT Solver, you must have a redesigned and reviewed Sequential Solver. It is still an open question that how you can build an efficient SAT Solver with a high level of scalability, combined with the modern multi-core architecture.
-Our work is far from that to be honest, but we made the first step towards a more efficient and more scaleable parallel SAT Solver. The next topic will explain how and what we did to make the humanity closer to this desire.
+Our work is not mainly aiming this part of the SAT Solvers, but we made the first step towards a more efficient and more scalable parallel SAT Solver. The next topic will explain the details of our progress.
 
 %Background
 \section{Background}
@@ -284,13 +284,13 @@ It seems, that due to the dissimilar average computational costs, major magnitud
 \section{Discussion}
 \label{sec:discussion}
 
-As we saw earlier, the testing results proved that our algorithm reached better runtime and saved some hardware resources as well. We made an optimized algorithm with $n^2$ computational cost. The A* algorithm gave a good base for our work, because it worked with minimum case heuristic and it gives an optimal result. Our analysis indicates that the minimum case heuristic not only improves solving times but also enhances the robustness of SAT solvers in handling large, real-world instances, suggesting significant implications for industry applications. The potential of the algorithm is significant, and we can use it for further researches.
+As we saw earlier, the testing results proved that our algorithm reached better runtime and saved hardware resources by 90\%. We made an optimized algorithm with $n^2$ computational cost. The A* algorithm gave a good base for our work, because it worked with minimum case heuristic and it gives an optimal result. Our analysis indicates that the minimum case heuristic not only improves solving times but also enhances the robustness of SAT solvers in handling large, real-world instances, suggesting significant implications for industry applications. The potential of the algorithm is significant, and we can use it for further researches.
 
 % Conclusion
 \section{Conclusion}
 \label{sec:conclusion}
 
-The overall impression of our method is more than satisfying.  As we discussed before, we have used MiniSAT with ManySAT to achieve these results. It made our method better than the concurrent ones. In our study, we systematically compared the performance of the minimum case heuristic against established heuristics such as VSIDS and Jeroslow-Wang, revealing notable improvements in solving time for complex SAT instances. The next steps and our future plans will be described in the Future Work section.
+The overall outcome of our method is more than satisfying.  As we discussed before, we have used MiniSAT with ManySAT to achieve these results. It made our method better than the concurrent ones. In our study, we systematically compared the performance of the minimum case heuristic against established heuristics such as VSIDS and Jeroslow-Wang, revealing notable improvements in solving time for complex SAT instances. The next steps and our future plans will be described in the Future Work section.
 
 %future work
 \section{Future work}
