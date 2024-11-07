@@ -75,7 +75,7 @@ The Boolean satisfiability Problem is one of the most important and fundamental 
 \subsection{History of SAT}
 The history of SAT started in the 19. century. With Boole algebra and logic domains founded, it made it possible to express logical operations in algebraic form. This evolved the modern computer logic and the basics of the SAT problem. In the early 1900s, the works of Alan Turing \cite{turing} and Kurt Gödel helped the formalization of problems like SAT and the analysis of the algorithms. In 1971 Stephen Cook published that SAT is an NP-complete problem \cite{satIsNPComplete}, which means non-deterministic polynomial time problem. It follows, that every NP-problem traceable to SAT in polynomial time. This was the first time in history, when SAT was considered as a NP-complete problem. From the 1980s to the present day, due to the practical applications the demand of SAT solver efficient algorithms has increased. From the late 80s and 90s the evolution of the SAT solvers was extremely fast. On the one hand DPLL algorithm \cite{dpll} and it is different modifications, and on the other hand the conflict based learning techniques brought a breakthrough.
 
-\subsection{Important progresses and methods SAT solvers}
+\subsection{Important progresses and methods of SAT solvers}
 Some of the most important advances and methods in SAT solvers:
 \begin{itemize}
     \item In 1962 the DPLL (Davis-Putnam-Logemann-Loveland) algorithm was published. It was the first efficient SAT solver, that searches for solutions systematically to the logical formula with tracing back and ramification.
@@ -88,16 +88,16 @@ Some of the most important advances and methods in SAT solvers:
 \label{subsec:practicaluse}
 The SAT problem solution has many fields of application, such as:
 \begin{itemize}
-    \item \textbf{Hardware and software verification:} The logical electric circuits and the programs formal control \cite{c32SAT}.
-    \item \textbf{Code optimization and automated planning:} Solutions often used in optimization tasks such as automated planning.
-    \item \textbf{Cryptography:} SAT solver algorithms play key roles in cryptography algorithms security analysis \cite{SATInCrypto}.
+    \item \textbf{Hardware and software verification:} The logical electric circuits and the programs formal control \cite{c32SAT}. Verification ensures that a circuit or program behaves as intended, without bugs or unintended behaviors. In hardware, SAT solvers help verify that logical electric circuits function correctly under all possible conditions by checking that the circuit logic meets specified requirements.
+    \item \textbf{Code optimization and automated planning:} Solutions often used in optimization tasks such as automated planning. In optimization tasks, SAT solvers help find the best solution within certain constraints, often leading to significant time and resource savings. In automated planning, SAT solvers help find the most efficient sequence of actions to achieve a goal, considering various constraints and dependencies.
+    \item \textbf{Cryptography:} SAT solver algorithms play key roles in cryptography algorithms security analysis \cite{SATInCrypto}. Sat solvers are analyzing and testing the security of cryptographic algorithms. Many cryptographic algorithms rely on complex logical constructs and transformations.
 \end{itemize}
 
 \subsection{Research question}
 As demonstrated above, there are many fields that apply the solution of SAT problem. Our goal was to support this fields with an algorithm that has a better runtime than the previously known solutions. We have earned $\theta(n^2)$ computational cost successful. This can be a significant breakthrough in the solution of NP-complete problems.
 
 \subsection{Motivation}
-Due to SAT problem is NP-complete it is a very challenging and complex task to find a fast algorithm which can solve it. Therefore, our group could develop significantly during this research in the field of algorithm design and analysis. Moreover, SAT is a popular problem in computational theory, thus there is a big competition in this topic which is also highly inspiring.
+Due to the fact, that SAT problem is NP-complete it is a very challenging and complex task to find a fast algorithm which can solve it. Therefore, our group could develop significantly during this research in the field of algorithm design and analysis. Moreover, SAT is a popular problem in computational theory, thus there is a big competition in this topic which is also highly inspiring.
 In addition, as can be read in subsection \ref{subsec:practicaluse} there are a variety of fields utilize SAT solver and we were motivated to help this them. 
 
 
