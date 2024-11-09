@@ -19,26 +19,26 @@
 \begin{document}
 
 %Title page
-\begin{titlepage}
-    \centering
-    \vspace{.7\baselineskip}
-    {\huge \textbf{The proper way of solving SAT}}
-    \\[10em]
-      Csüllög Benedek
-    \\Fülöp Martin
-    \\Laczkó Zsófia
-    \\Korpa Péter Zsolt\\
-\end{titlepage}
+%\begin{titlepage}
+%    \centering
+%    \vspace{.7\baselineskip}
+%    {\huge \textbf{The proper way of solving SAT}}
+%    \\[10em]
+%      Csüllög Benedek
+%    \\Fülöp Martin
+%    \\Laczkó Zsófia
+%    \\Korpa Péter Zsolt\\
+%\end{titlepage}
 
 %% TODO szép első oldal
 
-%\title{The proper way of solving SAT}
-%\author{
-%  \\Csüllög Benedek
-%  \\Fülöp Martin
-%  \\Laczkó Zsófia
-%  \\Korpa Péter Zsolt\\
-%}
+\title{The proper way of solving SAT}
+\author{
+  \\Csüllög Benedek
+  \\Fülöp Martin
+  \\Laczkó Zsófia
+  \\Korpa Péter Zsolt\\
+}
 \maketitle
 
 \section*{Abstract}
@@ -47,7 +47,7 @@
 SAT is a decision problem where we need to determine whether is a given Boolean formula in conjunctive normal form (CNF) is satisfiable. The problem is NP-complete, which means that there is not a known algorithm which could efficiently solves SAT problem. 
 The goal of our research was to find an algorithm which can solve the SAT problem polynomial time, if possible in $\theta(n^2)$.
 % The MiniSAT, ManySAT parts can be freely changed, there is no such thing as sharing graph. Also combining them might not even make sense.
-Most Sequential SAT solvers are based on the David-Putnam-Loveland-Logemann (DPLL) algorithm. Later improvements lead to CDCL (Conflict Driven Clause Learning) and to the "restart" technique Our approach combines two importart solver, MiniSAT and ManySAT. 
+Most Sequential SAT solvers are based on the David-Putnam-Loveland-Logemann (DPLL) algorithm. Later improvements lead to CDCL (Conflict Driven Clause Learning) and to the "restart" technique Our approach combines two important solver, MiniSAT and ManySAT. 
 %The MiniSAT provided schema for Parallel SAT-Solvers. 
 ManySAT is a parallel SAT-Solver which is based on the portfolio method, it runs many instances on partitioned search space. Weakness of ManySAT is the problem with sharing between slaves. MiniSAT works in a grid model, but has no sharing. Our method improves on previous methods by solving the issues of sharing. We combine the sharing and grid based methods. We archive this by sharing graphs that share information on conflicting clauses. The testing results of the algorithm demonstrate its efficiency and accuracy on various benchmark SAT problems. The new approach significantly reduced the runtime compared to classical methods. The potential of the algorithm is further proven by its ability to handle more complex instances.
 
@@ -114,7 +114,7 @@ In \autoref{sec:relwork} the Reader may get information of the most significant 
 
 \subsection{Stochastic Boolean Satisfiability \cite{sbs}}
 
-The article of Stochastic Boolean Satisfiability presents a connection point between a satisfiability problem and a probabilistic model. It Demonstrates how to adapt a view of satisfiability on the field of probability. SSAT in focus, a general stochastic satisfiability problem, which plays a similar role in probabilistic domains like SAT in deterministic ones.The article analyze the relationship between planning and uncertainty. Shows systematic and stochastic algorithms, for SSAT solutions. Perhaps the complexity gap between SSAT (PSPACE) and SAT (NP), is large, the article suggests, that the knowledge of SAT could be applied to the probabilistic domain.
+The article of Stochastic Boolean Satisfiability presents a connection point between a satisfiability problem and a probabilistic model. It Demonstrates how to adapt a view of satisfiability on the field of probability. SSAT in focus, a general stochastic satisfiability problem, which plays a similar role in probabilistic domains like SAT in deterministic ones. The article analyze the relationship between planning and uncertainty. Shows systematic and stochastic algorithms, for SSAT solutions. Perhaps the complexity gap between SSAT (PSPACE) and SAT (NP), is large, the article suggests, that the knowledge of SAT could be applied to the probabilistic domain.
 
 \subsection{A survey of SAT solver \cite{surveyOfSatSolvers}}
 
@@ -122,7 +122,7 @@ In Computer Science, the Boolean Satisfiability Problem(SAT) is the problem of d
 
 \subsection{Sequential SAT Solvers}
 
-The first SAT Solvers were sequential ones. These based on the Davis-Putnam-Loveland-Logemann (DPLL) algorithm. This algorithm includes rules which help to generate and traverse a binary search tree. Each part of the search tree is equal to a partial interpretation. The elements of the tree branch walked through by a back-track algorithm and the main goal is to explore recent alternatives. This led to the CDCL (Conflict Driven Clause Learning) algorithm. The algorithm resolve the conflict clause and those clauses which were used in the implications, and learn these ones. After, these clauses can be added to the further formulas and improve the backtracking behaviour. Another technique was the "restarts", which helped to upgrade the performance. The most common SAT Solver which combine the CDCL and restart technique is the MINI-SAT. The MINI-SAT was introduced in 2003 and got improvements in each year and provided a basic schema, for sequential and parallel SAT-Solvers.
+The first SAT Solvers were sequential ones. These based on the Davis-Putnam-Loveland-Logemann (DPLL) algorithm. This algorithm includes rules which help to generate and traverse a binary search tree. Each part of the search tree is equal to a partial interpretation. The elements of the tree branch walked through by a back-track algorithm and the main goal is to explore recent alternatives. This led to the CDCL (Conflict Driven Clause Learning) algorithm. The algorithm resolve the conflict clause and those clauses which were used in the implications, and learn these ones. After, these clauses can be added to the further formulas and improve the backtracking behavior. Another technique was the "restarts", which helped to upgrade the performance. The most common SAT Solver which combine the CDCL and restart technique is the MINI-SAT. The MINI-SAT was introduced in 2003 and got improvements in each year and provided a basic schema, for sequential and parallel SAT-Solvers.
 
 
 \subsection{An overview of parallel SAT solving}
@@ -146,7 +146,7 @@ Our work is not mainly aiming this part of the SAT Solvers, but we made the firs
 \section{Background of SAT problem in logic}
 \label{sec:background}
 
-SAT problem is about satisfiability of Boolean formulas in conjunctive normal form (CNF). To analyse this kind of formulas, some concepts need to be defined. On one hand we need to talk about Boolean formulas in general and then their required special form. On the other hand, we have to clarify what satisfiability means. The necessary definitions for this can be read below. These are valid in propositional logic.
+SAT problem is about satisfiability of Boolean formulas in conjunctive normal form (CNF). To analyze this kind of formulas, some concepts need to be defined. On one hand we need to talk about Boolean formulas in general and then their required special form. On the other hand, we have to clarify what satisfiability means. The necessary definitions for this can be read below. These are valid in propositional logic.
 
 \subsection{Boolean formulas}
 First of all, we have to define what are propositional variables, then how can we create formulas from them. In addition to these it is important to define interpretation with which we can give a logical value for variables.
@@ -189,13 +189,13 @@ A formula is satisfiable, if exists an interpretation which satisfies it, otherw
 \section{Solving SAT the right way}
 \label{sec:methodology}
 
-In this section we discribe our solution. In a high level we combine the innovations of MiniSAT \cite{MiniSAT} and ManySAT \cite{ManySAT} into one parallel SAT solving algorithm. The proposed framework integrates ManySAT cooperative search strategy with MiniSat conflict-clause minimization techniques. In this hybrid approach, multiple instances of MiniSat operate in parallel, each tasked with exploring different regions of the solution space. As these instances encounter conflicts, they utilize conflict analysis to generate learned clauses. However, rather than maintaining isolation, the instances share these learned clauses dynamically among themselves, allowing for a more comprehensive exchange of information.
+In this section we discribe our solution. In a high level we combine the innovations of MiniSAT \cite{MiniSAT} and ManySAT \cite{ManySAT} into one parallel SAT solving algorithm. The proposed framework integrates ManySAT cooperative search strategy with MiniSAT conflict-clause minimization techniques. In this hybrid approach, multiple instances of MiniSAT operate in parallel, each tasked with exploring different regions of the solution space. As these instances encounter conflicts, they utilize conflict analysis to generate learned clauses. However, rather than maintaining isolation, the instances share these learned clauses dynamically among themselves, allowing for a more comprehensive exchange of information.
 
 This cooperation between instances enhance the learning process by ensuring that the already accessed clauses are accessible, thus eliminating potential useless work. Additionally, the shared knowledge of conflicts facilitates quicker convergence towards solutions, as instances can benefit from the shared clauses. The overall architecture aims to harness the scalability of ManySAT while incorporating the efficiency gains from MiniSat clause minimization, resulting in a more robust and performant SAT solving technique. First we describe the algorithm in detail and what tools we used for implementing it then we give an high level proof of correctness and the faster convergence.
 
 \subsection{Algorithm}
 \label{subsec:algithm}
-In this section we discribe our algorithm.
+In this section we describe our algorithm.
 
 \begin{algorithm}
 \caption{Clause sharing}\label{alg:cap}
@@ -217,7 +217,7 @@ In this section we discribe our algorithm.
  }
 \end{algorithm}
 
-The $f(x)$ function is freely choosable, but testing has shows that the best result come from $log$.
+The $f(x)$ function is freely selectable, but testing has shows that the best result come from $log$.
 
 \begin{itemize}
     \item Initialization: We first initialize a set of parallel solver instances (based on MiniSAT), denoted as $S = {S_1,S_2,…,S_n}$. Each instance is assigned a distinct portion of the problem $P$, represented as a collection of clauses $C$.
@@ -259,7 +259,7 @@ The proof of convergence then looks like the following.
     where $\Delta D_H$ represents the reduction in decisions achieved through heuristic guidance.
     \item Step 4: Reduction in Decisions and Conflicts
     The pruning of the search space directly impacts the decision-making process. Let $D$ represent the number of decisions made by an instance to reach a solution. The expected number of decisions after sharing learned clauses becomes: $D'=D - log(\Delta D)$
-    where $\Delta D$ represents the reduction in decisions due to improved clause sharing. As $\Delta D$ decreases the number of conflicts decears.
+    where $\Delta D$ represents the reduction in decisions due to improved clause sharing. As $\Delta D$ decreases the number of conflicts decrease.
 
     \item Step 5: Accelerated Convergence. The cumulative effect of shared learned clauses and reduced search spaces leads to faster convergence. As the instances navigate a more constrained search environment, the overall time to reach a satisfying assignment decreases. Thus, we can express convergence towards a solution as: $$ \lim_{t \rightarrow \infty}P(SAT) \rightarrow 1 $$ (where $P(SAT)$ is the probability of finding a solution).
 \end{itemize}
@@ -273,7 +273,7 @@ The integration of ManySAT cooperative search with MiniSat conflict-clause minim
 In this section, the test results of the new algorithm can be seen. The SAT problem is NP-complete, which means most of the computational cost of the modern algorithms are close to exponential. But our method provides $n^{2}$ computational cost.
 
 \subsection{Test results}
-Before testing we must had to implement the new algorithm and the concurrent ones. Both of the algorithms were needed to be able to take the same paramters. Naturally we had some issues during the implementation of the algorithms. For instance we had to handle all edge cases. But after all we had correct implementations, and we could start testing.
+Before testing we must had to implement the new algorithm and the concurrent ones. Both of the algorithms were needed to be able to take the same parameters. Naturally we had some issues during the implementation of the algorithms. For instance we had to handle all edge cases. But after all we had correct implementations, and we could start testing.
 
 During testing we ran our algorithm and one of our most efficient on SAT problems. We tried the algorithms on logical formulas, that contains 1 to 4 logical variables. The methods got the same formulas, problems. The results of the executions are shown the diagrams below.
 
