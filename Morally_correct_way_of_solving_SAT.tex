@@ -94,18 +94,19 @@ The SAT problem solution has many fields of application, such as:
 \end{itemize}
 
 \subsection{Research question}
-As demonstrated above, there are many fields that apply the solution of SAT problem. Our goal was to support this fields with an algorithm that has a better runtime than the previously known solutions. We have earned $\theta(n^2)$ computational cost successful. This can be a significant breakthrough in the solution of NP-complete problems.
+As demonstrated above, there are many fields that apply the solution of SAT problem. Our goal is to support this fields with an algorithm that has a better runtime than the previously known solutions. We have earned $\theta(n^2)$ computational cost successful. This can be a significant breakthrough in the solution of NP-complete problems.
 
 \subsection{Motivation}
 Due to the fact, that SAT problem is NP-complete it is a very challenging and complex task to find a fast algorithm which can solve it. Therefore, our group could develop significantly during this research in the field of algorithm design and analysis. Moreover, SAT is a popular problem in computational theory, thus there is a big competition in this topic which is also highly inspiring.
-In addition, as can be read in subsection \ref{subsec:practicaluse} there are a variety of fields utilize SAT solver and we were motivated to help this them. 
+In addition, as can be read in \autoref{subsec:practicaluse} there are a variety of fields utilize SAT solver and we were motivated to help this them. 
 
 
 \section{Structure of the article}
 The structure of the article could be divided into the following parts, that drives along the Reader through the article.
     %\item \hyperref[sec:abstract]{\textbf{Abstract}} section contains a summary of the problem of research, goal and methodology.
     %\item \hyperref[sec:intro]{\textbf{Introduction}} section provides information about the SAT problem and it is historical background and practical usages nowadays.
-In the \hyperref[sec:relwork]{\textbf{Related works}} section the Reader may get information of the most significant researches in the Boolean algebra and Logic domains. For better understanding, the Reader may look through the \hyperref[sec:background]{\textbf{Background}} section, where helpful logical definitions are given. \hyperref[sec:methodology]{\textbf{Solving SAT the right way}} section explains the algorithm developed during the research. Presents its behaviour and novelty in detail. \hyperref[sec:measurements]{\textbf{Measurements}} section contains test results of our algorithm compared to concurrent ones. The results are analysed in this section. In the \hyperref[sec:discussion]{\textbf{Discussion}} part the the evaluation of the results is taking place. These results are compared to the previously set goals. The most significant consequences of the article are summarized in the \hyperref[sec:conclusion]{\textbf{Conclusion}} section. The Reader is informed about our experiences and achievements. \hyperref[sec:future]{\textbf{Future work}} section the next research directions and opportunities are discussed, which can result further corrections and additions to our algorithm. \hyperref[sec:bib]{\textbf{References}} section contains all the scientific articles and other sources, that were referenced in this article.
+In \autoref{sec:relwork} the Reader may get information of the most significant researches in the Boolean algebra and Logic domains. For better understanding, the Reader may look through the \autoref{sec:background}, where helpful logical definitions are given. The \autoref{sec:methodology} explains the algorithm developed during the research. Presents its behaviour and novelty in detail. The 
+\autoref{sec:measurements} contains test results of our algorithm compared to concurrent ones. The results are analysed in this section too. In \autoref{sec:discussion} the the evaluation of the results is taking place. These results are compared to the previously set goals. The most significant consequences of the article are summarized in the \autoref{sec:conclusion}. The Reader is informed about our experiences and achievements. In \autoref{sec:future} the next research directions and opportunities are discussed, which can result further corrections and additions to our algorithm. The \hyperref[bib]{\textbf{References}} section contains all the scientific articles and other sources, that were referenced in this article.
 
 %Related works
 \section{Related works}
@@ -126,7 +127,11 @@ The first SAT Solvers were sequential ones. These based on the Davis-Putnam-Love
 
 \subsection{An overview of parallel SAT solving}
 
-In recent years the multicore architectures are becoming more and more wide\-spread. The SAT solvers should take advantage of this. Therefore, researchers have put a lot of focus on parallel algorithms. In the An overview of parallel SAT solving article we can read a great summary of the results in this field. The paper demonstrates the search space splitting and portfolio strategies which are the most important approaches. Furthermore, it contains some other significant solutions, for example hybrid methods. The different techniques present how multicore architectures can be used in SAT solving, and these had a relevant impact on our research. For a more in depth review of parallel solvers refer to \cite{paralellSAT}.
+In recent years the multicore architectures are becoming more and more wide\-spread. The SAT solvers should take advantage of this. Therefore, researchers have put a lot of focus on parallel algorithms.
+In the field of SAT solvers parallelism is significant, since with multiple processors the different parts of the search space can be examined on different threads at the same time. Moreover, the threads can share the learned information among themselves, and dead ends can be avoided with this approach.
+
+
+In the An overview of parallel SAT solving article we can read a great summary of the results in this field. The paper demonstrates the search space splitting and portfolio strategies which are the most important approaches. Furthermore, it contains some other significant solutions, for example hybrid methods. The different techniques present how multicore architectures can be used in SAT solving, and these had a relevant impact on our research. For a more in depth review of parallel solvers refer to \cite{paralellSAT}.
 
 
 \subsection{Parallel SAT Solvers}
@@ -138,7 +143,7 @@ So lastly, if you want to create a well designed parallel SAT Solver, you must h
 Our work is not mainly aiming this part of the SAT Solvers, but we made the first step towards a more efficient and more scalable parallel SAT Solver. The next topic will explain the details of our progress.
 
 %Background
-\section{Background}
+\section{Background of SAT problem in logic}
 \label{sec:background}
 
 SAT problem is about satisfiability of Boolean formulas in conjunctive normal form (CNF). To analyse this kind of formulas, some concepts need to be defined. On one hand we need to talk about Boolean formulas in general and then their required special form. On the other hand, we have to clarify what satisfiability means. The necessary definitions for this can be read below. These are valid in propositional logic.
@@ -189,6 +194,7 @@ In this section we discribe our solution. In a high level we combine the innovat
 This cooperation between instances enhance the learning process by ensuring that the already accessed clauses are accessible, thus eliminating potential useless work. Additionally, the shared knowledge of conflicts facilitates quicker convergence towards solutions, as instances can benefit from the shared clauses. The overall architecture aims to harness the scalability of ManySAT while incorporating the efficiency gains from MiniSat clause minimization, resulting in a more robust and performant SAT solving technique. First we describe the algorithm in detail and what tools we used for implementing it then we give an high level proof of correctness and the faster convergence.
 
 \subsection{Algorithm}
+\label{subsec:algithm}
 In this section we discribe our algorithm.
 
 \begin{algorithm}
@@ -271,7 +277,7 @@ Before testing we must had to implement the new algorithm and the concurrent one
 
 During testing we ran our algorithm and one of our most efficient on SAT problems. We tried the algorithms on logical formulas, that contains 1 to 4 logical variables. The methods got the same formulas, problems. The results of the executions are shown the diagrams below.
 
-On the diagrams which can be seen on figure~\ref{fig:measurements} the blue dots represents our algorithm max and min computational costs for each amounts of logical variables. The red dots represents the concurrent algorithms minimal computational cost. The blue line shows the average costs of our algorithm, the read one belongs to the best concurrent algorithms. For instance the SAT-3 problem solved in only 9 steps.
+On the diagrams which can be seen in \autoref{fig:measurements} the blue dots represents our algorithm max and min computational costs for each amounts of logical variables. The red dots represents the concurrent algorithms minimal computational cost. The blue line shows the average costs of our algorithm, the read one belongs to the best concurrent algorithms. For instance the SAT-3 problem solved in only 9 steps.
 
 \begin{figure}[h]
     \centering
@@ -302,7 +308,7 @@ The overall outcome of our method is more than satisfying.  As we discussed befo
 We earned great results with our methodology, but the algorithm still can be faster.
 In future we would like to optimize further the computational costs and the runtime.
 We will continue our research in this direction. 
-Our goal is to decrease the execution time of our algorithm from $\theta(n^2)$ to $\theta (n*log(n))$ which can be seen on figure \ref{fig:futurework}. This would mean an even bigger breakthrough in the practical application of the SAT problem. We also think that for the $f$ parameter shown in section 4.1 could be improved a lot. We tried out many trivial functions and landed on $log$.
+Our goal is to decrease the execution time of our algorithm from $\theta(n^2)$ to $\theta (n*log(n))$. For comparison, our current result can be seen in red and our future plan in green in \autoref{fig:futurework}. This would mean an even bigger breakthrough in the practical application of the SAT problem. We also think that for the $f$ parameter shown in \autoref{subsec:algithm} could be improved a lot. We tried out many trivial functions and landed on $log$.
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\linewidth]{img/futurework.png}
@@ -320,9 +326,11 @@ Our goal is to decrease the execution time of our algorithm from $\theta(n^2)$ t
 
 % Bibliography (mandatory)
 \newpage
+
+\refstepcounter{section}
 \bibliographystyle{plain}
 \bibliography{sat}
-\label{sec:bib}
+\label{bib}
 
 %[1]  - \href{https://doi.org/10.1063/1.4981999}{A survey of SAT solver}
 %\newline
