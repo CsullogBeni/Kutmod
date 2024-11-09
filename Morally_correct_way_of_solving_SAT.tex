@@ -122,7 +122,7 @@ In Computer Science, the Boolean Satisfiability Problem (SAT) is the problem of 
 
 \subsection{Sequential SAT Solvers}
 
-The first SAT Solvers were sequential ones. These based on the Davis-Putnam-Loveland-Logemann (DPLL) algorithm. This algorithm includes rules which help to generate and traverse a binary search tree. Each part of the search tree is equal to a partial interpretation. The elements of the tree branch walked through by a back-track algorithm and the main goal is to explore recent alternatives. This led to the CDCL (Conflict Driven Clause Learning) algorithm. The algorithm resolves the conflict clause and those clauses which were used in the implications, and learn these ones. After, these clauses can be added to the further formulas and improve the backtracking behavior. Another technique was the "restarts", which helped to upgrade the performance. The most common SAT Solver which combine the CDCL and restart technique is the MINI-SAT. The MINI-SAT was introduced in 2003 and got improvements in each year and provided a basic schema, for sequential and parallel SAT-Solvers.
+The first SAT Solvers were sequential ones. These based on the Davis-Putnam-Loveland-Logemann (DPLL) algorithm. This algorithm includes rules which help to generate and traverse a binary search tree. Each part of the search tree is equal to a partial interpretation. The elements of the tree branch walked through by a back-track algorithm and the main goal is to explore recent alternatives. This led to the CDCL (Conflict Driven Clause Learning) algorithm. The algorithm resolves the conflict clause and those clauses which were used in the implications, and learn these ones. After, these clauses can be added to the further formulas and improve the backtracking behavior. Another technique was the "restarts", which helped to upgrade the performance. The most common SAT Solver which combine the CDCL and restart technique is the MINI-SAT. The MINI-SAT was introduced in 2003 and got improvements in each year and provided a basic schema, for sequential and parallel SAT-Solvers.\cite{OverviewSAT}
 
 
 \subsection{An overview of parallel SAT solving}
@@ -140,7 +140,7 @@ At the dawn of the Parallel SAT Solvers, the first Solver only used single-core 
 1+. The solver should be aware of the hardware components in order to utilize the non-uniform access.
 2. The solver should exchange the learned clauses and the data between the processes which running on different cores and has to be balanced well from the calculus up to the hardware level.
 So lastly, if you want to create a well designed parallel SAT Solver, you must have a redesigned and reviewed Sequential Solver. It is still an open question that how you can build an efficient SAT Solver with a high level of scalability, combined with the modern multi-core architecture.
-Our work is not mainly aiming this part of the SAT Solvers, but we made the first step towards a more efficient and more scalable parallel SAT Solver. The next topic will explain the details of our progress.
+Our work is not mainly aiming this part of the SAT Solvers, but we made the first step towards a more efficient and more scalable parallel SAT Solver. The next topic will explain the details of our progress.\cite{OverviewSAT}
 
 %Background
 \section{Background of SAT problem in logic}
