@@ -32,13 +32,13 @@
 
 %% TODO szép első oldal
 
-\title{The proper way of solving SAT}
-\author{
-  \\Csüllög Benedek
-  \\Fülöp Martin
-  \\Laczkó Zsófia
-  \\Korpa Péter Zsolt\\
-}
+%\title{The proper way of solving SAT}
+%\author{
+%  \\Csüllög Benedek
+%  \\Fülöp Martin
+%  \\Laczkó Zsófia
+%  \\Korpa Péter Zsolt\\
+%}
 \maketitle
 
 \section*{Abstract}
@@ -186,7 +186,7 @@ A formula is satisfiable, if exists an interpretation which satisfies it, otherw
 
 In this section we discribe our solution. In a high level we combine the innovations of MiniSAT \cite{MiniSAT} and ManySAT \cite{ManySAT} into one parallel SAT solving algorithm. The proposed framework integrates ManySAT cooperative search strategy with MiniSat conflict-clause minimization techniques. In this hybrid approach, multiple instances of MiniSat operate in parallel, each tasked with exploring different regions of the solution space. As these instances encounter conflicts, they utilize conflict analysis to generate learned clauses. However, rather than maintaining isolation, the instances share these learned clauses dynamically among themselves, allowing for a more comprehensive exchange of information.
 
-This cooperation between instances enhance the learning process by ensuring that the already accessed clauses are accessible, thus eliminating potential useless work. Additionally, the shared knowledge of conflicts facilitates quicker convergence towards solutions, as instances can benefit from the shared clauses. The overall architecture aims to harness the scalability of ManySAT while incorporating the efficiency gains from MiniSat clause minimization, resulting in a more robust and performant SAT solving technique. First we describe the algorithm in detail, then we give an high level proof of correctness and the faster convergence.
+This cooperation between instances enhance the learning process by ensuring that the already accessed clauses are accessible, thus eliminating potential useless work. Additionally, the shared knowledge of conflicts facilitates quicker convergence towards solutions, as instances can benefit from the shared clauses. The overall architecture aims to harness the scalability of ManySAT while incorporating the efficiency gains from MiniSat clause minimization, resulting in a more robust and performant SAT solving technique. First we describe the algorithm in detail and what tools we used for implementing it then we give an high level proof of correctness and the faster convergence.
 
 \subsection{Algorithm}
 In this section we discribe our algorithm.
@@ -232,6 +232,9 @@ The $f(x)$ function is freely choosable, but testing has shows that the best res
 \end{itemize}
 
 The proposed algorithm effectively merges the parallelization strengths of ManySAT with the efficiency of MiniSat conflict-clause minimization. By fostering a collaborative environment, the solver is positioned to tackle a broader range of SAT instances with improved performance and faster convergence.
+
+\subsection{Implementation details}
+To implement the proposed clause-sharing algorithm, a combination of data structures optimized for parallelism, conflict resolution, and dynamic search space partitioning is employed. The primary data type representing the problem is a \textit{set of clauses} $D$, which is partitioned into subsets $D_i$ corresponding to the different solver instances $S_i$. Each partition $D_i$ is represented as a \textit{vector} of clauses, where each clause is stored as a set of literals. The solvers $S_i$ are initialized as instances of the MiniSAT solver (latest version), with each solver managing a \textit{stack-based decision tree} for search and backtracking. To store the learned clauses during conflict resolution, a \textit{hash table} or \textit{unordered map} is used, where the keys correspond to clause identifiers and the values store the actual learned clauses. This data structure allows for fast lookups and efficient sharing of clauses among solver instances. The \textit{conflict pool} \( confPool \), which collects conflicting clauses across solvers, is implemented as a \textit{dynamic array} or \textit{queue}, enabling the addition of clauses in real-time while maintaining efficient access for future conflict analysis. For cooperative search and synchronization of the solvers, a \textit{shared memory space} or \textit{thread-safe queue} structure is used, allowing each solver instance to concurrently push new clauses to the shared pool while reading updates. The partitioning of $D$ and modification of each solver’s search space $R_i$ are tracked using \textit{arrays} or \textit{dictionaries} indexed by the solver instance identifier, ensuring efficient lookups and updates. Finally, the search depth $d $ is represented as an integer, which is dynamically adjusted based on the number of conflicting clauses in the conflict pool, with the pool being updated after each conflict resolution step. This structure enables the iterative exploration of the problem space, with each solver progressively narrowing its search using the shared knowledge from the conflict pool.
 
 \subsection{Proof of convergence}
 
