@@ -1,0 +1,54 @@
+Review form must contain (write about each item 1-2 sentences):
+ 
+Recommendation: strong reject, reject, weak reject,
+borderline, weak accept, accept, strong accept (-3 .. 3): 2
+The article demonstrates an important outcome in addressing bottlenecks and an interesting approach of web development. Therefore, I can recommend it to anyone who works with networks. 
+
+Summary of the content and Evaluation of
+Technical Content and Accuracy (1 - 7): 6
+The technical content could be elaborated more thoroughly.
+
+Significance of the Work (1 - 7): 7
+Nowadays nearly everyone uses web applications regularly in daily life, and speed is very important for users, so the research at the field of latency is notable.
+
+Appropriate Title, Introduction, and Conclusion (1 - 7): 6
+Title was very informative. The introduction was short, but it was a good summary of the importance of the topic. In conclusion we got a great overview of the outcomes.
+
+Overall Organization (1 - 7): 7
+The article is well-organized, the structure helps for the reader to understand. The introduction is a great foundation for the main parts, the methodology part clearly presents the research. The results and the conclusion summarize the output.
+
+Appropriateness for the conf/journal (1 - 7): 7
+The paper presents a significant result of handling bottlenecks; therefore, it is appropriate for conf/journal. It could be a good basis for further research.
+
+Style and Clarity of the Paper (1 - 7): 6
+The style of the article is clear and appropriate. The language usage is suitable and well-understood. 
+
+Originality of Content (1 - 7):  7
+The group has represented a new approach of handling bottlenecks. The article demonstrates significantly results.
+
+Novelty of results: beyond state of the art (related work)?
+The article demonstrates a novel approach to addressing latency in networks. They add useful new results in this topic.
+
+Appropriateness of the methods, validation, references;
+The methods used in the article were great and well suited to the goal of the research.
+Validations were well-understood. References were appropriate and well-fitting.
+
+Comments on errors, typos, grammar, figures;
+I have not found big errors; the grammar was adequate. There was only a little mistake: they used a lot of structure with apostrophe.
+Figures were well-designed.
+
+Proposal for improvements;
+The article mentioned that when performance issues arise it is difficult to determine the source of the problem. In my opinion you could work on this in the further. If you cannot determine it independent of any framework, you can explore it only in the most used frameworks.
+
+Reviewers confidence and Confidential remarks;
+I read the article with great interest, because I work in web development. Overall, the paper is high quality and demonstrates a significant result in the field of latency.
+I have only one remark: Your first reference which is about user behavior is a bit old. Websites and the using of them change very quickly.
+
+
+Checking for plagiarism and violation of guidelines;
+I have not identified any instances of plagiarism or rule violations.
+
+Remark: be professional, pleasant, helpful, scientific, timely,
+realistic, respectful
+Realistic. The research based on a real and important problem in daily life.
+Helpful. The paper demonstrates a new approach of the field of latency, which is a good basis for further research.
