@@ -1,0 +1,62 @@
+Review form must contain (write about each item 1-2 sentences):
+ 
+Recommendation: strong reject, reject, weak reject,
+borderline, weak accept, accept, strong accept (-3 .. 3): 2 ;
+
+strong accept
+
+Summary of the content and Evaluation of
+Technical Content and Accuracy (1 - 7): 6
+
+This research provides a new and innovative way of determining the topology of microserive architechtures without the need of the envirement. This can prove helpful in searching for design flows in these systems, and the paper examines this and provides ways for it.
+
+Significance of the Work (1 - 7): 7
+
+The results presente how usefull the methodology developed in the paper is, also its very innovative in nature are this idea hasnt been used before. The paper understands and demonstrates the significance of this new approach.
+
+Appropriate Title, Introduction, and Conclusion (1 - 7): 6
+
+The title is inforamtive, the introduction lays out the main problem the paper is trying to solve in an understandable way. The conculsion is correct, captures the innovations in the paper and fairly evaluates their results.  
+
+Overall Organization (1 - 7): 7
+
+The article is well organized, the topic is presented in a nice way that is followable and is nice to read.
+
+Appropriateness for the conf/journal (1 - 7): 7
+
+The topic of the paper is appropriate for the conference.
+
+Style and Clarity of the Paper (1 - 7): 6
+
+The methodology and concepts are explained clearly, with examples. Most of the steps taken are well motivated and clear to follow.
+
+Originality of Content (1 - 7): 7
+
+The paper draws from many sources of recent work, and its clear the authors are very familiar with the topic, they include all revelvant citations. The work in the article is very original in its methodology.
+
+Novelty of results: beyond state of the art (related work)? 5
+
+At the time the results seem to be novel, but more evaluation is needed.
+
+Appropriateness of the methods, validation, references;
+
+The methodology used by the authors are well presented and motivated, their results are validated with results.
+
+Comments on errors, typos, grammar, figures;
+
+I found no errors, typos. More figures for the methodology could make it more understandable, but i feel the writing is good enough. 
+
+Proposal for improvements;
+
+I have no remarks.
+
+Reviewers confidence and Confidential remarks;
+
+As I am not an expert on mircoservices i feel my review might not be most correct, but i have a big confidence in my ability to evaluates their methodology. I have no confidential remarks.
+
+Checking for plagiarism and violation of guidelines;
+
+I have found no sign of plagiarism or guideline violation.
+
+Remark: be professional, pleasant, helpful, scientific, timely,
+realistic, respectful
